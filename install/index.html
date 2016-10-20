@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Homeland</title>
+
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
+    <script src="/javascripts/bootstrap.min.js"></script>
+  </head>
+
+  <body class="install install_index">
+    <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
+      <div class="container">
+        <a class="navbar-brand" href="/">Homeland</a>
+        <ul class="nav navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/expo">Expo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/install">Install</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="_blank" href="http://try.gethomeland.com">Try It</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item float-xs-right">
+            <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">Fork on GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="main">
+      <div class="container">
+        <h2>Homeland Docker</h2>
+
+<p><a href="http://gethomeland.com">Homeland</a> 基于 Docker 的自动化部署方案。</p>
+
+<h2>系统需求</h2>
+
+<ul>
+<li>Linux Server [4 Core CPU, 4G Memory, 50G Disk, 64 位] - <em>建议 Ubuntu Server 14.04</em></li>
+<li><a href="https://www.docker.com/">Docker</a>, <a href="https://docs.docker.com/compose/">Docker Compose</a></li>
+<li><a href="https://www.aliyun.com/product/oss">Aliyun OSS</a> 或 <a href="https://www.upyun.com">UpYun</a> 用于文件存储。</li>
+</ul>
+
+<h2>Usage</h2>
+
+<h3>安装 Docker:</h3>
+
+<p>下面的脚本是增对 Ubuntu Server 14.04 设计的，其他版本，请查阅 <a href="https://docker.github.io/engine/installation/linux/">Docker 官方的安装文档</a>。</p>
+
+<pre><code class="bash">curl -sSL https://git.io/vPypp | bash
+</code></pre>
+
+<p>测试是否安装成功：</p>
+
+<pre><code class="bash">sudo docker info
+sudo docker-compose version
+</code></pre>
+
+<h3>获取 homeland-docker 的项目</h3>
+
+<pre><code class="bash">git clone https://github.com/ruby-china/homeland-docker.git
+cd homeland-docker/
+</code></pre>
+
+<p>你可以根据你的项目情况，修改 <code>config</code> 和 <code>etc</code> 里面的配置文件。</p>
+
+<h3>编译环境</h3>
+
+<blockquote>
+<p>前面的脚本安装以后，docker 需要用 <code>sudo</code> 来执行，切记！</p>
+</blockquote>
+
+<pre><code class="bash">sudo ./bin/install
+</code></pre>
+
+<h3>启动</h3>
+
+<pre><code class="bash">sudo ./bin/start
+</code></pre>
+
+<h2>命令列表</h2>
+
+<blockquote>
+<p>在 Linux 环境里面，前面的脚本安装以后，docker，以及一下这些命令需要用 <code>sudo</code> 来执行，切记！</p>
+</blockquote>
+
+<p>| Command | Desc |
+|&mdash;&mdash;&mdash;|&mdash;&mdash;|
+| ./bin/install | 首次安装，创建数据库 |
+| ./bin/update | 更新应用程序，重新编译，此方法可以更新最新的 Ruby China 代码 |
+| ./bin/start | 启动所有服务，将会自动启动所有的服务 |
+| ./bin/stop | 停止所有服务 |
+| ./bin/restart | 硬重启服务 |
+| ./bin/status | 查看服务状态 |</p>
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; Homeland 2016. </p>
+      </div>
+    </footer>
+  </body>
+</html>
