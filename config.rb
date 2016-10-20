@@ -37,3 +37,7 @@ configure :build do
   # Minify Javascript on build
   activate :minify_javascript
 end
+
+after_build do |builder|
+  `cp CNAME build/CNAME`
+end
