@@ -43,6 +43,17 @@ pre {
   }
 }
 
+table {
+  width: 100%;
+  border: 1px solid #eee;
+  thead th {
+    background: #f9f9f9;
+    color: #666;
+  }
+  th,
+  td { padding: 0.5em; border-bottom: 1px solid #eee;}
+}
+
 footer {
   padding: 20px 0;
   color: #ddd;
