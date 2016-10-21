@@ -3,45 +3,53 @@
   <head>
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta charset="utf-8">
+    <link rel="icon" href="/images/icon.svg">
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 
     <!-- Use title if it's in the page YAML frontmatter -->
     <title>Homeland</title>
 
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
-    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
   </head>
 
   <body class="about about_index">
     <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
       <div class="container">
-        <a class="navbar-brand" href="/">Homeland</a>
-        <ul class="nav navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/expo">Expo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/install">Install</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" target="_blank" href="http://try.gethomeland.com">Try It</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-          </li>
-          <li class="nav-item float-xs-right">
-            <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">Fork on GitHub</a>
-          </li>
-        </ul>
+        <a class="navbar-brand" href="/"><img src="/images/icon-inverse.svg" alt="Homeland" /></a>
+        <div id="navbarResponsive" class="collapse navbar-toggleable-md">
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/expo">Expo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/install">Install</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" href="http://try.gethomeland.com">Try It</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item float-lg-right">
+              <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">Fork on GitHub</a>
+            </li>
+          </ul>
+        </div>
+        <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"></button>
       </div>
     </nav>
 
     <div id="main">
       <div class="container">
-        <h2>Homeland</h2>
+        <h1>Homeland</h1>
+
+<div style="text-align:center; margin-bottom: 40px;">
+  <img src="/images/icon.svg" style="width: 200px; max-width: 50%;" />
+</div>
 
 <p>Homeland 是一款精美小巧的开源社区论坛系统，它的功能由 <a href="https://ruby-china.org">Ruby China</a> 的多年沉淀而来，小巧而实用。</p>
 
@@ -64,6 +72,14 @@
 <li>Theme from <a href="https://github.com/huacnlee/mediom">Mediom</a></li>
 </ul>
 
+<h2>Logo</h2>
+
+<ul>
+<li><a href="/images/icon.svg">普通版本</a></li>
+<li><a href="/images/icon-reverse.svg">反色版本</a></li>
+<li><a href="/images/text-logo.svg">图文结合版本</a></li>
+</ul>
+
 <h2>License</h2>
 
 <p>Released under the MIT license:</p>
@@ -83,7 +99,8 @@
 
     <footer>
       <div class="container">
-        <p>&copy; Homeland 2016. </p>
+        <p>
+          <span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2016. </p>
       </div>
     </footer>
   </body>
