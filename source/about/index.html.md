@@ -1,5 +1,8 @@
-Homeland
---------
+# Homeland
+
+<div style="text-align:center; margin-bottom: 40px;">
+  <img src="/images/icon.svg" style="width: 200px; max-width: 50%;" />
+</div>
 
 Homeland 是一款精美小巧的开源社区论坛系统，它的功能由 [Ruby China](https://ruby-china.org) 的多年沉淀而来，小巧而实用。
 
@@ -17,6 +20,12 @@ Homeland 能帮助你快速的构建一个论坛系统，你只需要几步安�
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/icons/)
 * Forked from [Homeland Project](https://github.com/huacnlee/homeland)
 * Theme from [Mediom](https://github.com/huacnlee/mediom)
+
+## Logo
+
+- <a href="/images/icon.svg">普通版本</a>
+- <a href="/images/icon-reverse.svg">反色版本</a>
+- <a href="/images/text-logo.svg">图文结合版本</a>
 
 ## License
 

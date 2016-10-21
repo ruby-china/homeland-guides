@@ -5,21 +5,49 @@ body {
   font-size: 1em;
 }
 
+.dark-logo {
+  color: #fff;
+}
+
 .navbar-dark.bg-primary {
   background-color: #356DD0 !important;
-  .btn-outline-success { border-color: #f0f0f0; }
+  .btn-outline-success {
+    margin-top: 3px;
+    border-color: rgba(255, 255, 255, 0.2);
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
 
-  .navbar-brand { margin-right: 20px; font-size: 1.5em; }
+  .navbar-brand {
+    padding: 0;
+    margin-right: 30px; font-size: 1.5em;
+    img { height: 48px; margin-top: -4px; }
+  }
   .navbar-nav .nav-link {
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+
+  .navbar-toggler {
+    outline: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    background-size:  36px 36px;
+    border: 0px;
   }
 }
 
 #main {
   padding: 40px 0;
-  min-height: 500px;
+  min-height: 100px;
   background: #FFF;
+
+  @media (min-width: 960px) {
+    min-height: 500px;
+  }
 }
 
 p {
@@ -29,6 +57,7 @@ p {
 
 h1, h2, h3 { line-height: 2em; }
 h4, h5, h6 { line-height: 1.5em; }
+h1 { text-align: center; }
 
 ul, ol {
   li { line-height: 2em; }
@@ -58,21 +87,39 @@ footer {
   padding: 20px 0;
   color: #ddd;
 
+  .dark-logo {
+    margin-right: 10px;
+    img { height: 26px; margin-bottom: 3px; color: #FFF; }
+  }
+
   p:last-child { margin-bottom: 0; }
 }
 
 #welcome {
   text-align: center;
   padding: 40px 0;
-  h1 { color: #356DD0; font-size: 6em; font-weight: bold; }
-  .sub-title { font-size: 2.3em; margin-bottom: 20px; }
+  h1 {
+    img { width: 500px; max-width: 80%; }
+  }
+  .sub-title { font-size: 1.2em; margin-bottom: 10px; }
 
   #try-button {
-    margin-top: 50px;
-    .btn-primary { margin-right: 40px; }
+    margin-top: 20px;
+    .btn-primary { margin-right: 10px; }
     .btn-lg {
       border-radius: 120px;
-      font-size: 2em;
+      font-size: 1em;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .sub-title { font-size: 2.3em; margin-bottom: 20px; }
+    #try-button {
+      margin-top: 50px;
+      .btn-primary { margin-right: 40px; }
+      .btn-lg {
+        font-size: 2em;
+      }
     }
   }
 }
