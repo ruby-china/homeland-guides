@@ -63,6 +63,10 @@ ul, ol {
   li { line-height: 2em; }
 }
 
+blockquote {
+  border-left: 5px solid #F3F4FE;
+  padding-left: 20px;
+}
 pre {
   background: #F3F4FE;
   code {
@@ -74,6 +78,7 @@ pre {
 
 table {
   width: 100%;
+  margin-bottom: 2em;
   border: 1px solid #eee;
   thead th {
     background: #f9f9f9;
@@ -121,5 +126,11 @@ footer {
         font-size: 2em;
       }
     }
+  }
+}
+
+.doc-menu {
+  ul {
+    padding-left: 0px;
   }
 }

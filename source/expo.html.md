@@ -1,3 +1,7 @@
+---
+title: Expo - Homeland
+---
+
 已经有很多个网站基于 Homeland 构建论坛系统了哦！
 
 * [Ruby China](https://ruby-china.org)

@@ -1,0 +1,10 @@
+<% wrap_layout :layout do %>
+  <div class="row">
+    <div class="col-md-2 doc-menu">
+      <%= partial "menu" %>
+    </div>
+    <div class="col-md-10">
+      <%= yield %>
+    </div>
+  </div>
+<% end %>

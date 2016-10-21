@@ -1,3 +1,7 @@
+---
+title: Install Homeland with Docker - Homeland
+---
+
 Homeland Docker
 -----------------
 

@@ -1,3 +1,7 @@
+---
+title: About - Homeland
+---
+
 # Homeland
 
 <div style="text-align:center; margin-bottom: 40px;">
