@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <link rel="icon" href="/images/favicon.png">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>config.yml</title>
+
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
+    <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
+  </head>
+
+  <body class="docs docs_configuration docs_configuration_config-file docs_configuration_config-file_index">
+    <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img src="/images/icon-inverse.svg" alt="Homeland" /></a>
+        <div id="navbarResponsive" class="collapse navbar-toggleable-md">
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/expo">Expo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/install">Install</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/docs">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" href="http://try.gethomeland.com">Try It</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item float-lg-right">
+              <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">Fork on GitHub</a>
+            </li>
+          </ul>
+        </div>
+        <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"></button>
+      </div>
+    </nav>
+
+    <div id="main">
+      <div class="container">
+          <div class="row">
+    <div class="col-md-2 doc-menu">
+      <ul>
+  <li>
+    Configuration
+    <ul>
+      <li><a href="/docs/configuration/config-file">config/config.yml</a></li>
+      <li><a href="/docs/configuration/upload">Upload configuration</a></li>
+    </ul>
+  </li>
+</ul>
+    </div>
+    <div class="col-md-10">
+      <h1>config.yml</h1>
+
+<p>Homeland 包含一系列的配置参数，在项目的 <code>config/config.yml</code> 包含 Homeland 的重要应用程序配置信息，你 <strong>必须</strong> 在首次部署应用程序之前，根据自己的实际情况调整这些配置。</p>
+
+<p>你还可以在管理后台的 &quot;全局设置&quot; 界面调整这些配置（这里调整能立刻生效，无须重启），当你在“全局设置”界面调整某项配置
+以后，配置信息的数据将写入到数据库中，<code>config/config.yml</code> 里面对应的项将被忽略，以后需要在管理后台才能修改。</p>
+
+<blockquote>
+<p>NOTE: 注意，某些重要配置项修改以后是需要重启的。</p>
+</blockquote>
+
+<h2>配置项</h2>
+
+<h3>功能配置</h3>
+
+<table><thead>
+<tr>
+<th>配置项</th>
+<th>解释</th>
+<th>需要重启?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_name</td>
+<td>应用程序名称</td>
+<td>是</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>网站域名，例如 <a href="http://www.foo.com">www.foo.com</a></td>
+<td>是</td>
+</tr>
+<tr>
+<td>https</td>
+<td>开启 Homeland 的 SSL 功能（出了开启此项，还别忘了要对 Web 服务配置 SSL）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>asset_host</td>
+<td>自定义网站静态资源文件的 Host，保持为空将不启用</td>
+<td>是</td>
+</tr>
+<tr>
+<td>admin_emails</td>
+<td>管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限</td>
+<td></td>
+</tr>
+<tr>
+<td>google_analytics_key</td>
+<td>Google Analytics 统计的 key</td>
+<td></td>
+</tr>
+<tr>
+<td>email_server</td>
+<td>邮件服务器 SMTP 地址</td>
+<td>是</td>
+</tr>
+<tr>
+<td>email_sender</td>
+<td>邮件服务器发件人</td>
+<td>是</td>
+</tr>
+<tr>
+<td>email_password</td>
+<td>邮件服务器密码</td>
+<td>是</td>
+</tr>
+<tr>
+<td>github_token</td>
+<td>GitHub 三方登录 Application Token</td>
+<td>是</td>
+</tr>
+<tr>
+<td>github_secret</td>
+<td>GitHub 三方登录 Application Secret</td>
+<td>是</td>
+</tr>
+</tbody></table>
+
+<h2>上传附件配置</h2>
+
+<p>详见: <a href="/docs/configuration/upload">Upload Configuration</a></p>
+
+<h2>高级设置</h2>
+
+<table><thead>
+<tr>
+<th>配置项</th>
+<th>解释</th>
+<th>需要重启?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apns_pem</td>
+<td>iOS - Apple Push Notification 证书，需要自定义 iOS 客户端可以配置此项</td>
+<td></td>
+</tr>
+<tr>
+<td>reject_newbie_reply_in_the_evening</td>
+<td>设置 true 将不允许新手等级的账号在晚上 10 点到第二天 9 点这段时间发帖</td>
+<td></td>
+</tr>
+<tr>
+<td>blacklist_ips</td>
+<td>IP 黑名单，里面的 IP 将无法访问</td>
+<td></td>
+</tr>
+<tr>
+<td>ban_words_on_reply</td>
+<td>垃圾回帖过滤名单，一行一个</td>
+<td></td>
+</tr>
+<tr>
+<td>node_ids_hide_in_topics_index</td>
+<td>那些节点不需要在论坛首页显示，这里需要填写节点编号</td>
+<td></td>
+</tr>
+<tr>
+<td>tips</td>
+<td>随机出现的小贴士，一行一个</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3>自定义 HTML</h3>
+
+<p>Homeland 允许你在一些重要位置自由编写 HTML，以适应不同的应用场景，例如，你可能需要将网站的 Logo 改一下，或者覆盖默认的 CSS 风格。</p>
+
+<blockquote>
+<p>支持管理后台“全局设置”界面实时调整</p>
+</blockquote>
+
+<table><thead>
+<tr>
+<th>配置项</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>navbar_brand_html</td>
+<td>导航栏 Logo 位置 HTML，你可以设置你的 Logo</td>
+</tr>
+<tr>
+<td>navbar_html</td>
+<td>导航栏扩展菜单，可以在顶部导航条增加扩展链接</td>
+</tr>
+<tr>
+<td>footer_html</td>
+<td>页面底部区域自定义 HTML，例如版权信息，次要链接等等</td>
+</tr>
+<tr>
+<td>index_html</td>
+<td>首页导航栏一下区域自定义 HTML</td>
+</tr>
+<tr>
+<td>wiki_index_html</td>
+<td>Wiki 首页自定义 HTML</td>
+</tr>
+<tr>
+<td>wiki_sidebar_html</td>
+<td>Wiki 页面左侧位置自定义 HTML</td>
+</tr>
+<tr>
+<td>topic_index_sidebar_html</td>
+<td>论坛话题列表首页 (/topics) 右侧边栏自定义 HTML</td>
+</tr>
+<tr>
+<td>custom_head_html</td>
+<td>页面 HTML <code>&lt;head&gt;&lt;/head&gt;</code> 区域自定义 HTML，你可以在这里写 CSS 覆盖，SEO 信息等等</td>
+</tr>
+<tr>
+<td>newbie_notices</td>
+<td>新手等级的会员将会看到的提示信息（HTML 语法)</td>
+</tr>
+</tbody></table>
+
+    </div>
+  </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>
+          <span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2016. </p>
+      </div>
+    </footer>
+  </body>
+</html>
