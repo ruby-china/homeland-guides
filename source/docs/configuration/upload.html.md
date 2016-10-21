@@ -63,6 +63,13 @@ Hoemeland 上传图片需要依赖云服务的图片缩略图功能。
 - UpYun: [云处理](http://docs.upyun.com/guide/#_12)
 - Aliyun: [图片处理](https://help.aliyun.com/document_detail/31917.html)
 
+### 开启 **间隔标识符**
+
+- UpYun 使用感叹号 `!` (应该默认已开启)
+- Aliyun 使用 `@!`
+
+### 缩略图版本
+
 请在对应的平台管理界面按下面的表格设置 **缩略图版本**：
 
 | 版本名称| 限定尺寸 (px) | 缩略方式           |
