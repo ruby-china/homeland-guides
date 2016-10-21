@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+$blue: #356DD0;
+
 body {
   background: #444;
   font-size: 1em;
@@ -10,7 +12,7 @@ body {
 }
 
 .navbar-dark.bg-primary {
-  background-color: #356DD0 !important;
+  background-color: $blue !important;
   .btn-outline-success {
     margin-top: 3px;
     border-color: rgba(255, 255, 255, 0.2);
@@ -127,6 +129,13 @@ footer {
       }
     }
   }
+}
+
+.home-features {
+  border-top: 2px dashed #eee;
+  padding: 40px 0;
+  h3 { font-size: 1.5em; color: $blue; }
+  p { margin: 0; }
 }
 
 .doc-menu {
