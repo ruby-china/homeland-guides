@@ -165,7 +165,17 @@
 </tr>
 <tr>
 <td>rack_attack</td>
-<td>[true, false] 是否启用请求频率保护</td>
+<td>保持为空，不启用</td>
+<td>是</td>
+</tr>
+<tr>
+<td>rack_attack.limit</td>
+<td>一个周期内单个 IP 的请求次数限制</td>
+<td>是</td>
+</tr>
+<tr>
+<td>rack_attack.period</td>
+<td>多少时间（秒）为一个请求限制周期</td>
 <td>是</td>
 </tr>
 <tr>
