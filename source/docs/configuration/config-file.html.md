@@ -1,8 +1,8 @@
 ---
-title: config.yml
+title: App configuration
 ---
 
-# app.local.env
+# 应用程序配置
 
 > NOTE: `app.default.env` 里面有默认配置可以参考哦，`app.local.env` 里面的配置信息将会覆盖 `app.default.env`
 > NOTE: 非 Docker 模式，配置文件在 `config/config.yml`
