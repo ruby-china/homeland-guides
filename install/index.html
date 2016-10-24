@@ -81,7 +81,11 @@ sudo docker-compose version
 cd homeland-docker/
 </code></pre>
 
-<p>你可以根据你的项目情况，修改 <code>config</code> 和 <code>etc</code> 里面的配置文件。</p>
+<h2>应用程序配置</h2>
+
+<p>Homeland 的应用程序配置主要基于 <code>app.local.env</code> 文件，请参考 <code>app.default.env</code>，以及阅读 <a href="/docs/configuration/config-file/">Config File</a> 理解各项配置信息的含义，根据自己的需要调整。</p>
+
+<p>默认情况下，Homeland 自带了基础的配置，但你仍然需要进行一系列的配置以后才可正常使用所有功能。</p>
 
 <h3>编译环境</h3>
 
@@ -89,12 +93,12 @@ cd homeland-docker/
 <p>前面的脚本安装以后，docker 需要用 <code>sudo</code> 来执行，切记！</p>
 </blockquote>
 
-<pre><code class="bash">sudo ./bin/install
+<pre><code class="bash">sudo make install
 </code></pre>
 
 <h3>启动</h3>
 
-<pre><code class="bash">sudo ./bin/start
+<pre><code class="bash">sudo make start
 </code></pre>
 
 <h2>命令列表</h2>
@@ -110,28 +114,40 @@ cd homeland-docker/
 </tr>
 </thead><tbody>
 <tr>
-<td>./bin/install</td>
+<td>make install</td>
 <td>首次安装，创建数据库</td>
 </tr>
 <tr>
-<td>./bin/update</td>
+<td>make update</td>
 <td>更新应用程序，重新编译，此方法可以更新最新的 Ruby China 代码</td>
 </tr>
 <tr>
-<td>./bin/start</td>
+<td>make start</td>
 <td>启动所有服务，将会自动启动所有的服务</td>
 </tr>
 <tr>
-<td>./bin/stop</td>
+<td>make stop</td>
 <td>停止所有服务</td>
 </tr>
 <tr>
-<td>./bin/restart</td>
+<td>make restart</td>
 <td>硬重启服务</td>
 </tr>
 <tr>
-<td>./bin/status</td>
+<td>make status</td>
 <td>查看服务状态</td>
+</tr>
+<tr>
+<td>make console</td>
+<td>进入 Rails 控制台</td>
+</tr>
+<tr>
+<td>make stop-all</td>
+<td>停止所有服务，包括数据库</td>
+</tr>
+<tr>
+<td>make reindex</td>
+<td>重建搜索索引</td>
 </tr>
 </tbody></table>
 

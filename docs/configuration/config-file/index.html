@@ -61,12 +61,17 @@
 </ul>
     </div>
     <div class="col-md-10">
-      <h1>config.yml</h1>
+      <h1>app.local.env</h1>
 
-<p>Homeland 包含一系列的配置参数，在项目的 <code>config/config.yml</code> 包含 Homeland 的重要应用程序配置信息，你 <strong>必须</strong> 在首次部署应用程序之前，根据自己的实际情况调整这些配置。</p>
+<blockquote>
+<p>NOTE: <code>app.default.env</code> 里面有默认配置可以参考哦，<code>app.local.env</code> 里面的配置信息将会覆盖 <code>app.default.env</code>
+NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
+</blockquote>
+
+<p>Homeland 包含一系列的配置参数，在项目的 <code>app.local.env</code> 包含 Homeland 的重要应用程序配置信息，你 <strong>必须</strong> 在首次部署应用程序之前，根据自己的实际情况调整这些配置。</p>
 
 <p>你还可以在管理后台的 &quot;全局设置&quot; 界面调整这些配置（这里调整能立刻生效，无须重启），当你在“全局设置”界面调整某项配置
-以后，配置信息的数据将写入到数据库中，<code>config/config.yml</code> 里面对应的项将被忽略，以后需要在管理后台才能修改。</p>
+以后，配置信息的数据将写入到数据库中，<code>app.local.env</code> 里面对应的项将被忽略，以后需要在管理后台才能修改。</p>
 
 <blockquote>
 <p>NOTE: 注意，某些重要配置项修改以后是需要重启的。</p>
