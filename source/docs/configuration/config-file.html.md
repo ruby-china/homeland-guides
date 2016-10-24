@@ -2,12 +2,15 @@
 title: config.yml
 ---
 
-# config.yml
+# app.local.env
 
-Homeland 包含一系列的配置参数，在项目的 `config/config.yml` 包含 Homeland 的重要应用程序配置信息，你 **必须** 在首次部署应用程序之前，根据自己的实际情况调整这些配置。
+> NOTE: `app.default.env` 里面有默认配置可以参考哦，`app.local.env` 里面的配置信息将会覆盖 `app.default.env`
+> NOTE: 非 Docker 模式，配置文件在 `config/config.yml`
+
+Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Homeland 的重要应用程序配置信息，你 **必须** 在首次部署应用程序之前，根据自己的实际情况调整这些配置。
 
 你还可以在管理后台的 "全局设置" 界面调整这些配置（这里调整能立刻生效，无须重启），当你在“全局设置”界面调整某项配置
-以后，配置信息的数据将写入到数据库中，`config/config.yml` 里面对应的项将被忽略，以后需要在管理后台才能修改。
+以后，配置信息的数据将写入到数据库中，`app.local.env` 里面对应的项将被忽略，以后需要在管理后台才能修改。
 
 > NOTE: 注意，某些重要配置项修改以后是需要重启的。
 
