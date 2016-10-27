@@ -21,6 +21,7 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | 配置项 |      解释      | 需要重启? |
 |--------|--------------|----------------|
 | app_name | 应用程序名称 | 是 |
+| modules | 可拔插组件配置，详见: [Modules](/docs/configuration/modules) | 是 |
 | domain | 网站域名，例如 www.foo.com | 是 |
 | https | 开启 Homeland 的 SSL 功能（出了开启此项，还别忘了要对 Web 服务配置 SSL） | 是 |
 | asset_host | 自定义网站静态资源文件的 Host，保持为空将不启用 | 是 |
