@@ -25,7 +25,7 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | domain | 网站域名，例如 www.foo.com | 是 |
 | https | 开启 Homeland 的 SSL 功能（出了开启此项，还别忘了要对 Web 服务配置 SSL） | 是 |
 | asset_host | 自定义网站静态资源文件的 Host，保持为空将不启用 | 是 |
-| admin_emails | 管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限 | |
+| admin_emails | 管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限（一行一个） | |
 | google_analytics_key | Google Analytics 统计的 key | |
 | email_server | 邮件服务器 SMTP 地址 | 是 |
 | email_sender | 邮件服务器发件人 | 是 |
