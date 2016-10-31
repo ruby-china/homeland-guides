@@ -27,9 +27,9 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | asset_host | 自定义网站静态资源文件的 Host，保持为空将不启用 | 是 |
 | admin_emails | 管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限（一行一个） | |
 | google_analytics_key | Google Analytics 统计的 key | |
-| email_server | 邮件服务器 SMTP 地址 | 是 |
-| email_sender | 邮件服务器发件人 | 是 |
-| email_password | 邮件服务器密码 | 是 |
+| mailer_provider | 邮件发送方式: [`smtp`, `postmark`] | 是 |
+| mailer_sender | 邮件通知发件人 | 是 |
+| mailer_options | 邮件服务详细配置，根据 `mailer_provider` 参数有可能不同，详见 [邮件服务配置](/docs/configuration/mailer) | 是 |
 | github_token | GitHub 三方登录 Application Token | 是 |
 | github_secret | GitHub 三方登录 Application Secret | 是 |
 
