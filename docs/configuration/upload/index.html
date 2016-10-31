@@ -7,7 +7,7 @@
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Upload Configuration</title>
+    <title>文件上传配置</title>
 
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
     <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
@@ -54,19 +54,21 @@
   <li>
     Configuration
     <ul>
-      <li><a href="/docs/configuration/config-file">App configuration</a></li>
+      <li><a href="/docs/configuration/config-file">基本配置</a></li>
       <li><a href="/docs/configuration/modules">Modules</a></li>
-      <li><a href="/docs/configuration/upload">Upload configuration</a></li>
+      <li><a href="/docs/configuration/upload">文件上传配置</a></li>
+      <li><a href="/docs/configuration/mailer">邮件服务配置</a></li>
     </ul>
   </li>
 </ul>
     </div>
     <div class="col-md-10">
-      <h1>Upload Configuration</h1>
+      <h1>文件上传配置</h1>
 
 <p>Homeland 目前支持两种文件存储方式：</p>
 
 <ul>
+<li>File - 本地存储</li>
 <li><a href="http://upyun.com">UpYun</a></li>
 <li><a href="https://www.aliyun.com/product/oss">Aliyun OSS</a></li>
 </ul>
@@ -82,7 +84,7 @@
 </thead><tbody>
 <tr>
 <td>upload_provider</td>
-<td>文件存储方式 [<code>upyun</code>, <code>aliyun</code>]</td>
+<td>文件存储方式 [<code>file</code>, <code>upyun</code>, <code>aliyun</code>]</td>
 <td>是</td>
 </tr>
 <tr>
@@ -107,6 +109,34 @@
 </tr>
 </tbody></table>
 
+<h2>File</h2>
+
+<p>本地存储上传文件，存放在 public/uploads 目录下。</p>
+
+<blockquote>
+<p>NOTE: file 模式没发实现分布式部署哦！</p>
+</blockquote>
+
+<p>File 模式需要 Nginx <a href="http://nginx.org/en/docs/http/ngx_http_image_filter_module.html">image_filter</a> module 配合才能生存缩略图。
+安装比较复杂，如果技能不熟练，请采用 Docker 模式部署。</p>
+
+<p>手工部署请参考 <a href="https://github.com/ruby-china/homeland-docker/blob/master/etc/nginx/">homeland_docker</a> 的配置。</p>
+
+<p>然后配置 <code>config/config.yml</code></p>
+
+<pre><code class="yml">defaults: &amp;defaults
+  # file 的模式，只需要一个配置
+  upload_provider: &quot;file&quot;
+</code></pre>
+
+<p>或 <code>app.local.env</code></p>
+
+<pre><code class="conf"># [uploader]
+upload_provider=file
+# upload_host 留空
+upload_host=
+</code></pre>
+
 <h2>UpYun</h2>
 
 <p>config/config.yml</p>
@@ -117,6 +147,16 @@
   upload_access_secret: &quot;password&quot;
   upload_bucket: &quot;your-bucket&quot;
   upload_url: &quot;http://your-bucket.b0.upaiyun.com&quot;
+</code></pre>
+
+<p>或 <code>app.local.env</code></p>
+
+<pre><code class="conf"># [uploader]
+upload_provider=upyun
+upload_access_id=username
+upload_access_secret=password
+upload_bucket=your-bucket
+upload_url=http://your-bucket.b0.upaiyun.com
 </code></pre>
 
 <h2>Aliyun OSS</h2>

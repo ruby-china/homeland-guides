@@ -7,13 +7,13 @@
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Homeland Documentation</title>
+    <title>邮件服务配置</title>
 
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
     <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
   </head>
 
-  <body class="docs docs_index">
+  <body class="docs docs_configuration docs_configuration_mailer docs_configuration_mailer_index">
     <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
       <div class="container">
         <a class="navbar-brand" href="/"><img src="/images/icon-inverse.svg" alt="Homeland" /></a>
@@ -48,9 +48,9 @@
 
     <div id="main">
       <div class="container">
-        <h1>Homeland Documentation</h1>
-
-<ul>
+          <div class="row">
+    <div class="col-md-2 doc-menu">
+      <ul>
   <li>
     Configuration
     <ul>
@@ -61,6 +61,73 @@
     </ul>
   </li>
 </ul>
+    </div>
+    <div class="col-md-10">
+      <h1>邮件服务配置</h1>
+
+<p>Homeland 会有一系列的邮件通知，例如：注册成功、找回密码、账号锁定 等...</p>
+
+<p>你需要在准备好邮件发送服务，可以是：</p>
+
+<ul>
+<li><a href="https://postmarkapp.com">Postmark</a> - 一个国外的邮件发送服务</li>
+<li>SMTP - 几乎所有的邮件服务提供商都支持 SMTP 的方式</li>
+</ul>
+
+<h2>SMTP 配置</h2>
+
+<p>你可以寻找一个支持邮件发送服务器的地方，注册一个自己网站域名的 SMTP 服务，并参考下面的配置（Gmail）：</p>
+
+<blockquote>
+<p>NOTE: 参考 Gmail 官方 <a href="https://support.google.com/mail/answer/7126229?hl=zh-Hans">SMTP 配置指导</a></p>
+</blockquote>
+
+<p>普通模式配置: <code>config/config.yml</code></p>
+
+<pre><code class="yml">default: &amp;default
+  mailer_provider: &#39;smtp&#39;
+  mailer_sender: &#39;no-relay@your-domain.com&#39;
+  mailer_options:
+    address: &#39;smtp-relay.gmail.com&#39;
+    port: 587
+    domain: &#39;your-domain.com&#39;
+    user_name: &#39;no-reply@your-domain.com&#39;
+    password: &#39;your-password&#39;
+    authentication: &#39;plain&#39;
+    enable_starttls_auto: true
+</code></pre>
+
+<p>Docker 模式，配置 <code>app.local.env</code></p>
+
+<pre><code class="conf">mailer_provider=smtp
+mailer_sender=no-reply@your-domain.com
+mailer_options.address=smtp-relay.gmail.com
+mailer_options.port=587
+mailer_options.domain=your-domain.com
+mailer_options.user_name=no-reply@your-domain.com
+mailer_options.password=your-password
+mailer_options.authentication=plain
+mailer_options.enable_starttls_auto=true
+</code></pre>
+
+<h2>Postmark</h2>
+
+<p>访问 <a href="https://postmarkapp.com">Postmark</a> 官方网站注册，并购买邮件服务，并获得 <code>app_key</code></p>
+
+<pre><code class="yml">default: &amp;default
+  mailer_provider: &#39;postmark&#39;
+  mailer_sender: &#39;no-relay@your-domain.com&#39;
+  mailer_options:
+    api_key: &#39;your-postmark-api-key&#39;
+</code></pre>
+
+<h2>如何测试</h2>
+
+<p>你只需要启动应用，并尝试找回密码功能，看看邮件是否正确收到。</p>
+
+    </div>
+  </div>
+
       </div>
     </div>
 

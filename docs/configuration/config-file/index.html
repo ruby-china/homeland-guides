@@ -54,9 +54,10 @@
   <li>
     Configuration
     <ul>
-      <li><a href="/docs/configuration/config-file">App configuration</a></li>
+      <li><a href="/docs/configuration/config-file">基本配置</a></li>
       <li><a href="/docs/configuration/modules">Modules</a></li>
-      <li><a href="/docs/configuration/upload">Upload configuration</a></li>
+      <li><a href="/docs/configuration/upload">文件上传配置</a></li>
+      <li><a href="/docs/configuration/mailer">邮件服务配置</a></li>
     </ul>
   </li>
 </ul>
@@ -125,18 +126,18 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <td></td>
 </tr>
 <tr>
-<td>email_server</td>
-<td>邮件服务器 SMTP 地址</td>
+<td>mailer_provider</td>
+<td>邮件发送方式: [<code>smtp</code>, <code>postmark</code>]</td>
 <td>是</td>
 </tr>
 <tr>
-<td>email_sender</td>
-<td>邮件服务器发件人</td>
+<td>mailer_sender</td>
+<td>邮件通知发件人</td>
 <td>是</td>
 </tr>
 <tr>
-<td>email_password</td>
-<td>邮件服务器密码</td>
+<td>mailer_options</td>
+<td>邮件服务详细配置，根据 <code>mailer_provider</code> 参数有可能不同，详见 <a href="/docs/configuration/mailer">邮件服务配置</a></td>
 <td>是</td>
 </tr>
 <tr>
