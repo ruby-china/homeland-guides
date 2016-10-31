@@ -24,7 +24,7 @@ Homeland 目前支持两种文件存储方式：
 
 本地存储上传文件，存放在 public/uploads 目录下。
 
-> NOTE: file 模式没发实现分布式部署哦！
+> NOTE: file 模式无法实现分布式部署哦！我们建议使用 UpYun 或 Aliyun 这样既有很好的响应速度，也无需额外备份本地文件。
 
 File 模式需要 Nginx [image_filter](http://nginx.org/en/docs/http/ngx_http_image_filter_module.html) module 配合才能生存缩略图。
 安装比较复杂，如果技能不熟练，请采用 Docker 模式部署。
