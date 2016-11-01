@@ -41,6 +41,8 @@ cd homeland-docker/
 
 Homeland 的应用程序配置主要基于 `app.local.env` 文件，请参考 `app.default.env`，以及阅读 [Config File](/docs/configuration/config-file/) 理解各项配置信息的含义，根据自己的需要调整。
 
+> NOTE: Docker 模式依靠环境变量文件 `app.local.env` 来配置应用，理论上你不需要修改 `config/config.yml`，除非你知道如何配置。
+
 默认情况下，Homeland 自带了基础的配置，但你仍然需要进行一系列的配置以后才可正常使用所有功能。
 
 ### 编译环境
@@ -64,7 +66,7 @@ sudo make start
 | Command | Desc |
 |---------|------|
 | make install | 首次安装，创建数据库 |
-| make update | 更新应用程序，重新编译，此方法可以更新最新的 Ruby China 代码 |
+| make update | 更新应用程序，当 `homeland/homeland` 这个 Docker Image 版本变化的时候，需要执行，合并数据库、编译 Assets |
 | make start | 启动所有服务，将会自动启动所有的服务 |
 | make stop | 停止所有服务 |
 | make restart | 硬重启服务 |

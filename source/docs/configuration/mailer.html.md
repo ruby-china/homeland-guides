@@ -24,7 +24,7 @@ default: &default
   mailer_provider: 'smtp'
   mailer_sender: 'no-relay@your-domain.com'
   mailer_options:
-    address: 'smtp-relay.gmail.com'
+    address: 'smtp.gmail.com'
     port: 587
     domain: 'your-domain.com'
     user_name: 'no-reply@your-domain.com'
@@ -38,7 +38,7 @@ Docker 模式，配置 `app.local.env`
 ```conf
 mailer_provider=smtp
 mailer_sender=no-reply@your-domain.com
-mailer_options.address=smtp-relay.gmail.com
+mailer_options.address=smtp.gmail.com
 mailer_options.port=587
 mailer_options.domain=your-domain.com
 mailer_options.user_name=no-reply@your-domain.com
