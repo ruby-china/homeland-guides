@@ -124,3 +124,13 @@ Hoemeland 上传图片需要依赖云服务的图片缩略图功能。
 例如: <a href="/images/docs/upload-version-example.png">UpYun 的部分配置截图</a>
 
 
+## 开启 CORS 跨域共享
+
+个人设置页面有通过 AJAX 请求强制刷新头像缓存的动作，你需要配置 UpYun 开启 [CORS 跨域共享](http://docs.upyun.com/cdn/feature/#cors) 功能：
+
+| 允许的域 | Methods | Allow Headers | Expose Headers |
+| ------- | ------- | ------------- | -------------- |
+| http://your-host.com | GET, HEAD, OPTIONS | Pragma | Pragma |
+
+> NOTE: 允许的域注意 http 还是 https，确保和你正常访问你网站的地址一样，例如: https://ruby-china.org
+
