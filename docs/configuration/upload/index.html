@@ -252,6 +252,30 @@ upload_url=http://your-bucket.b0.upaiyun.com
 
 <p>例如: <a href="/images/docs/upload-version-example.png">UpYun 的部分配置截图</a></p>
 
+<h2>开启 CORS 跨域共享</h2>
+
+<p>个人设置页面有通过 AJAX 请求强制刷新头像缓存的动作，你需要配置 UpYun 开启 <a href="http://docs.upyun.com/cdn/feature/#cors">CORS 跨域共享</a> 功能：</p>
+
+<table><thead>
+<tr>
+<th>允许的域</th>
+<th>Methods</th>
+<th>Allow Headers</th>
+<th>Expose Headers</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="http://your-host.com">http://your-host.com</a></td>
+<td>GET, HEAD, OPTIONS</td>
+<td>Pragma</td>
+<td>Pragma</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>NOTE: 允许的域注意 http 还是 https，确保和你正常访问你网站的地址一样，例如: <a href="https://ruby-china.org">https://ruby-china.org</a></p>
+</blockquote>
+
     </div>
   </div>
 
