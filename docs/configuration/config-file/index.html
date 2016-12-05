@@ -167,7 +167,7 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 </thead><tbody>
 <tr>
 <td>apns_pem</td>
-<td>iOS - Apple Push Notification 证书，需要自定义 iOS 客户端可以配置此项，请打开 <code>.pem</code> 文件，将文件内容通过管理后台设置进去，参见 <a href="http://docs.aws.amazon.com/zh_cn/sns/latest/dg/mobile-push-apns.html#ssl-cert-apns">Apple Push Notification Service 入门</a>。</td>
+<td>iOS - Apple Push Notification 证书，需要自定义 iOS 客户端可以配置此项，请打开 <code>.pem</code> 文件，将文件内容通过管理后台设置进去，.pem 导出方法 <code>openssl pkcs12 -in cert.p12 -out cert.pem -nodes -clcerts</code>，参见: <a href="https://github.com/jpoz/APNS">APNS</a>。</td>
 <td></td>
 </tr>
 <tr>
