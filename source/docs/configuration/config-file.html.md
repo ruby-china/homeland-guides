@@ -32,6 +32,8 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | mailer_options | 邮件服务详细配置，根据 `mailer_provider` 参数有可能不同，详见 [邮件服务配置](/docs/configuration/mailer) | 是 |
 | github_token | GitHub 三方登录 Application Token | 是 |
 | github_secret | GitHub 三方登录 Application Secret | 是 |
+| default_locale | 应用程序语言，默认 "zh-CN"，可选 ['zh-CN', 'zh-TW', 'en'] | 是 |
+| auto_locale | 是否自动根据用户浏览器设置，切换到相应的语言, true | false 默认 | 是 |
 
 ## 上传附件配置
 
