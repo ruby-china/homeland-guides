@@ -42,7 +42,8 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | 配置项 | 解释 | 需要重启? |
 |--------|--------------|----------------|
 | apns_pem | iOS - Apple Push Notification 证书，需要自定义 iOS 客户端可以配置此项，请打开 `.pem` 文件，将文件内容通过管理后台设置进去，.pem 导出方法 `openssl pkcs12 -in cert.p12 -out cert.pem -nodes -clcerts`，参见: [APNS](https://github.com/jpoz/APNS)。 | |
-| reject_newbie_reply_in_the_evening | 设置 true 将不允许新手等级的账号在晚上 10 点到第二天 9 点这段时间发帖 | |
+| newbie_limit_time | 新注册用户（新手）限制期，单位秒，在新手期不能创建新话题，仅能回帖。0 不限制, 默认 86400 (24 小时) | |
+| reject_newbie_reply_in_the_evening | 设置 true 将不允许新手等级的账号在晚上 10 点到第二天 9 点这段时间回帖 | |
 | rack_attack | 保持为空，不启用 | 是 |
 | rack_attack.limit | 一个周期内单个 IP 的请求次数限制 | 是 |
 | rack_attack.period | 多少时间（秒）为一个请求限制周期 | 是 |
