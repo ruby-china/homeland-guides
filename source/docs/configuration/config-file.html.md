@@ -22,7 +22,6 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 |--------|--------------|----------------|
 | app_name | 应用程序名称 | 是 |
 | modules | 可拔插组件配置，详见: [Modules](/docs/configuration/modules) | 是 |
-| profile_fileds | 配置用户资料开启的字段，可选值：[company,twitter,website,tagline,location] | 是 |
 | domain | 网站域名，例如 www.foo.com | 是 |
 | https | 开启 Homeland 的 SSL 功能（出了开启此项，还别忘了要对 Web 服务配置 SSL） | 是 |
 | asset_host | 自定义网站静态资源文件的 Host，保持为空将不启用 | 是 |
@@ -35,6 +34,42 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | github_secret | GitHub 三方登录 Application Secret | 是 |
 | default_locale | 应用程序语言，默认 "zh-CN"，可选 ['zh-CN', 'zh-TW', 'en'] | 是 |
 | auto_locale | 是否自动根据用户浏览器设置，切换到相应的语言, true | false 默认 | 是 |
+
+## 用户资料可选项
+
+你可以根据实际需要开启某些用户字段
+| 配置项 |      解释      | 需要重启? |
+|--------|--------------|----------------|
+| profile_fileds | 配置用户资料开启的字段，默认 all 开启全部 | 是 |
+
+#### 可选值:
+
+- company - 所在公司
+- twitter - Twitter
+- website - 个人网站
+- tagline - 签名
+- location - 城市
+- hr - HR 功能，HR 具有直接发帖权限，以及有特别的标示图表
+- alipay - 支付宝账号
+- paypal - PayPal 账号
+- qq - QQ 号
+- weibo - 微博
+- wechat - 微信
+- douban - Douban ID
+- dingding - 钉钉
+- aliwangwang - 阿里旺旺
+- facebook - Facebook
+- instagram - Instagram
+- dribbble - Dribbble
+- battle_tag - Battle Tag 战网账号
+- psn_id - PSN ID (PS 游戏联网 ID)
+- steam_id - Stream ID
+
+例如:
+
+```yml
+profile_fileds: 'twitter,facebook,wechat'
+```
 
 ## 上传附件配置
 
