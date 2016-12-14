@@ -150,7 +150,54 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <td>GitHub 三方登录 Application Secret</td>
 <td>是</td>
 </tr>
+<tr>
+<td>default_locale</td>
+<td>应用程序语言，默认 &quot;zh-CN&quot;，可选 [&#39;zh-CN&#39;, &#39;zh-TW&#39;, &#39;en&#39;]</td>
+<td>是</td>
+</tr>
+<tr>
+<td>auto_locale</td>
+<td>是否自动根据用户浏览器设置，切换到相应的语言, true</td>
+<td>false 默认</td>
+</tr>
 </tbody></table>
+
+<h2>用户资料可选项</h2>
+
+<p>你可以根据实际需要开启某些用户字段
+| 配置项 |      解释      | 需要重启? |
+|--------|--------------|----------------|
+| profile_fileds | 配置用户资料开启的字段，默认 all 开启全部 | 是 |</p>
+
+<h4>可选值:</h4>
+
+<ul>
+<li>company - 所在公司</li>
+<li>twitter - Twitter</li>
+<li>website - 个人网站</li>
+<li>tagline - 签名</li>
+<li>location - 城市</li>
+<li>hr - HR 功能，HR 具有直接发帖权限，以及有特别的标示图表</li>
+<li>alipay - 支付宝账号</li>
+<li>paypal - PayPal 账号</li>
+<li>qq - QQ 号</li>
+<li>weibo - 微博</li>
+<li>wechat - 微信</li>
+<li>douban - Douban ID</li>
+<li>dingding - 钉钉</li>
+<li>aliwangwang - 阿里旺旺</li>
+<li>facebook - Facebook</li>
+<li>instagram - Instagram</li>
+<li>dribbble - Dribbble</li>
+<li>battle_tag - Battle Tag 战网账号</li>
+<li>psn_id - PSN ID (PS 游戏联网 ID)</li>
+<li>steam_id - Stream ID</li>
+</ul>
+
+<p>例如:</p>
+
+<pre><code class="yml">profile_fileds: &#39;twitter,facebook,wechat&#39;
+</code></pre>
 
 <h2>上传附件配置</h2>
 
@@ -171,8 +218,13 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <td></td>
 </tr>
 <tr>
+<td>newbie_limit_time</td>
+<td>新注册用户（新手）限制期，单位秒，在新手期不能创建新话题，仅能回帖。0 不限制, 默认 86400 (24 小时)</td>
+<td></td>
+</tr>
+<tr>
 <td>reject_newbie_reply_in_the_evening</td>
-<td>设置 true 将不允许新手等级的账号在晚上 10 点到第二天 9 点这段时间发帖</td>
+<td>设置 true 将不允许新手等级的账号在晚上 10 点到第二天 9 点这段时间回帖</td>
 <td></td>
 </tr>
 <tr>
