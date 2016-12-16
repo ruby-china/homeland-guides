@@ -4,7 +4,7 @@ title: App configuration
 
 # 应用程序配置
 
-> NOTE: `app.default.env` 里面有默认配置可以参考哦，`app.local.env` 里面的配置信息将会覆盖 `app.default.env`
+> NOTE: `app.default.env` 里面有默认配置可以参考哦，`app.local.env` 里面的配置信息将会覆盖 `app.default.env`，仅 Docker 部署需要。
 > NOTE: 非 Docker 模式，配置文件在 `config/config.yml`
 
 Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Homeland 的重要应用程序配置信息，你 **必须** 在首次部署应用程序之前，根据自己的实际情况调整这些配置。

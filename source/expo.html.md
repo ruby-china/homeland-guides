@@ -13,5 +13,7 @@ title: Expo - Homeland
 * [EthFans](http://ethfans.org)
 - [玩交易](https://wanjiaoyi.com)
 - [产学联](http://chanxuelian.com/)
+- [Yitai.co](http://yitai.co/)
+- [笨笨鸟公会论坛](http://bbs.teamkn.com)
 
 如果你也用了 Homeland，请在 GitHub 上 <a href="https://github.com/ruby-china/gethomeland.com/issues/new" target="_blank" class="btn btn-primary">告诉我们你在用 Homeland</a>
