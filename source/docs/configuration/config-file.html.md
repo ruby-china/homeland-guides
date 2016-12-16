@@ -40,7 +40,7 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 你可以根据实际需要开启某些用户字段
 | 配置项 |      解释      | 需要重启? |
 |--------|--------------|----------------|
-| profile_fileds | 配置用户资料开启的字段，默认 all 开启全部 | 是 |
+| profile_fields | 配置用户资料开启的字段，默认 all 开启全部 | 是 |
 
 #### 可选值:
 
@@ -68,7 +68,7 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 例如:
 
 ```yml
-profile_fileds: 'twitter,facebook,wechat'
+profile_fields: 'twitter,facebook,wechat'
 ```
 
 ## 上传附件配置
