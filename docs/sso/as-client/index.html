@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <link rel="icon" href="/images/favicon.png">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Homeland</title>
+
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
+    <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
+  </head>
+
+  <body class="docs docs_sso docs_sso_as-client docs_sso_as-client_index">
+    <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img src="/images/icon-inverse.svg" alt="Homeland" /></a>
+        <div id="navbarResponsive" class="collapse navbar-toggleable-md">
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/expo">Expo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/install">Install</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/docs">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" href="http://try.gethomeland.com">Try It</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" href="https://ruby-china.org/topics/node23">Meta</a>
+            </li>
+            <li class="nav-item float-lg-right">
+              <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">Fork on GitHub</a>
+            </li>
+          </ul>
+        </div>
+        <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"></button>
+      </div>
+    </nav>
+
+    <div id="main">
+      <div class="container">
+          <div class="row">
+    <div class="col-md-2 doc-menu">
+      <ul>
+  <li>
+    Configuration
+    <ul>
+      <li><a href="/docs/configuration/config-file">基本配置</a></li>
+      <li><a href="/docs/configuration/modules">Modules</a></li>
+      <li><a href="/docs/configuration/upload">文件上传配置</a></li>
+      <li><a href="/docs/configuration/mailer">邮件服务配置</a></li>
+    </ul>
+  </li>
+  <li>
+    Single Sign On <sup>beta</sup>
+    <ul>
+      <li><a href="/docs/sso/as-client">通过三方应用实现 SSO 登录</a></li>
+      <li><a href="/docs/sso/as-provider">提供 SSO 给三方应用</a></li>
+    </ul>
+  </li>
+</ul>
+    </div>
+    <div class="col-md-10">
+      <h1>通过三方应用实现 SSO 登录</h1>
+
+<blockquote>
+<p>version: 2.4.0</p>
+</blockquote>
+
+<p>Homeland 支持 <a href="https://en.wikipedia.org/wiki/Single_sign-on">Single Sign On</a>，可以让你将 Homeland 无缝的和现有应用结合，实现统一登录的功能。</p>
+
+<p>本文是介绍如何让 Homeland 通过三方应用实现 SSO 自动登录。</p>
+
+<p>在你准备使用 Homeland 的时候，你可能已有一个网站，有自己的用户体系，例如：一个新闻网站。如果你希望 Homeland 自动通过这个新闻网站的账号体系来实现登录，你需要跟随下面的教程调整你的现有网站，以实现 Homeland SSO 功能的接入。</p>
+
+<blockquote>
+<p>NOTE: 本文涉及需要給原有应用编写代码的部分，需技术人员，部分演示代码采用 Ruby 语言编写，其他语言可作为参考。</p>
+</blockquote>
+
+<h2>准备</h2>
+
+<p>在实现之前你可以先阅读一下 Homeland SSO 接口的实现代码:</p>
+
+<p><a href="https://github.com/ruby-china/homeland/blob/master/lib/single_sign_on.rb">ruby-china/homeland/blob/master/lib/single_sign_on.rb</a></p>
+
+<pre><code class="rb">class SingleSignOn
+  ACCESSORS         = [:nonce, :name, :username, :email, :avatar_url, :bio, :external_id, :return_sso_url, :admin]
+  FIXNUMS           = []
+  BOOLS             = [:admin]
+  NONCE_EXPIRY_TIME = 10.minutes
+
+  attr_accessor(*ACCESSORS)
+  attr_accessor :sso_secret, :sso_url
+
+  def self.parse(payload, sso_secret = nil)
+    sso = new
+    sso.sso_secret = sso_secret if sso_secret
+  ... 省略
+end
+</code></pre>
+
+<p>请参考此文件实现一个 <code>SingleSignOn</code> 类，如果是 Ruby 你可以直接复制来使用。</p>
+
+<blockquote>
+<p>NOTE: <code>SingleSignOn</code> 类是参考 <a href="https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045">Discourse</a> 实现的，所以理论上来说 Discourse 支持哪些 SSO 登陆方式，在 Homeland 上面也是有效的。</p>
+</blockquote>
+
+<p>在你的主应用中提供一个 (<code>sso.url</code>) 类似这样的  <code>http://your-app.com/homeland/sso</code> 的接口，并实现类似下面的代码：</p>
+
+<pre><code class="rb">class HomelandSsoController &lt; ApplicationController
+  def sso
+    # sso_secret 需要和 Homeland 里面配置的 sso_secret 一致
+    secret = &quot;MY_SSO_SECRET_STRING&quot;
+    sso = SingleSignOn.parse(request.query_string, secret)
+    # 以下的信息将会提供给 Homeland 作为用户信息同步
+    sso.email = &quot;user@email.com&quot;
+    sso.name = &quot;Bill Hicks&quot;
+    sso.username = &quot;bill@hicks.com&quot;
+    sso.bio = &quot;This is bio of this user&quot;
+    sso.external_id = &quot;123&quot; # unique id for each user of your application
+    sso.sso_secret = secret
+
+    # 最后将准备好的信息计算成加密的 URL Query String 并跳转到 Homeland 应用的 SSO 登录地址 &#39;/auth/sso/login&#39;
+    # Homeland 接收到信息以后，将会实现同步账号登陆的流程
+    redirect_to sso.to_url(&quot;http://your-homeland-app.com/auth/sso/login&quot;)
+  end
+end
+</code></pre>
+
+<h2>配置 Homeland</h2>
+
+<p>请参阅 Homeland <a href="/docs/configuration/config-file">配置文档</a>，并增加下面这些配置:</p>
+
+<table><thead>
+<tr>
+<th>配置项</th>
+<th>解释</th>
+<th>需要重启?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sso.enable</td>
+<td>true 启用 SSO 登陆，请确保 enable_provider 为 false，否则将无效</td>
+<td>是</td>
+</tr>
+<tr>
+<td>sso.url</td>
+<td>主应用的 SSO 登陆地址</td>
+<td>是</td>
+</tr>
+<tr>
+<td>sso.secret</td>
+<td>主应用提供的 sso_secret，请确保两边一致，并注意保密</td>
+<td>是</td>
+</tr>
+</tbody></table>
+
+<h2>参考链接</h2>
+
+<ul>
+<li><a href="https://gist.github.com/huacnlee/f89bbe4b8350ba75435a2160ae5884a9">WordPress Page Template for SSO with Homeland</a></li>
+</ul>
+
+    </div>
+  </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>
+          <span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2016. </p>
+      </div>
+    </footer>
+  </body>
+</html>
