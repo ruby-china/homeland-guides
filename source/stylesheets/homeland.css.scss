@@ -1,6 +1,9 @@
 @charset "utf-8";
 
 $blue: #356DD0;
+$yellow: #FF9800;
+
+sup { color: $yellow; }
 
 body {
   background: #444;
@@ -141,5 +144,10 @@ footer {
 .doc-menu {
   ul {
     padding-left: 0px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    ul {
+      font-size: 12px;
+    }
   }
 }
