@@ -1,6 +1,6 @@
 # 作为 Single Sign On 提供者 (SSO Provider)
 
-> version: 2.4.0
+> version: 2.5.0
 
 Homeland 支持 [Single Sign On](https://en.wikipedia.org/wiki/Single_sign-on)，可以让你将 Homeland 无缝的和现有应用结合，实现统一登录的功能。
 
