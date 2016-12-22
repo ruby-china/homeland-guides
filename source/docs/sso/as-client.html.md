@@ -70,6 +70,14 @@ end
 | sso.url | 主应用的 SSO 登陆地址 | 是 |
 | sso.secret | 主应用提供的 sso_secret，请确保两边一致，并注意保密 | 是 |
 
-## 参考链接
+## 各类语言关于 `SingleSignOn` 的实现参考
+
+- Ruby - [single_sign_on.rb](https://github.com/ruby-china/homeland/blob/master/lib/single_sign_on.rb)
+- Python - [welenofsky/discourse_sso_python](https://github.com/welenofsky/discourse_sso_python)
+- Go - [hjr265/go-discourse-sso](https://github.com/hjr265/go-discourse-sso/blob/master/sso.go)
+- Node.js - [ArmedGuy/discourse_sso_node](https://github.com/ArmedGuy/discourse_sso_node)
+- PHP - [ArmedGuy/discourse_sso_php](https://github.com/ArmedGuy/discourse_sso_php)
+
+## 其他参考链接
 
 - [WordPress Page Template for SSO with Homeland](https://gist.github.com/huacnlee/f89bbe4b8350ba75435a2160ae5884a9)
