@@ -78,6 +78,7 @@ sudo docker-compose version
 <h3>获取 homeland-docker 的项目</h3>
 
 <pre><code class="bash">git clone https://github.com/ruby-china/homeland-docker.git
+git checkout v2.4.2 # 切换到 stable 版本
 cd homeland-docker/
 </code></pre>
 
@@ -120,6 +121,10 @@ cd homeland-docker/
 <tr>
 <td>make install</td>
 <td>首次安装，创建数据库</td>
+</tr>
+<tr>
+<td>make install_ssl</td>
+<td>安装并申请 SSL 证书 (since: 2.5.0)</td>
 </tr>
 <tr>
 <td>make update</td>
