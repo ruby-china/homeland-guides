@@ -31,7 +31,10 @@ default: &default
     password: 'your-password'
     authentication: 'plain'
     enable_starttls_auto: true
+    # openssl_verify_mode: true
 ```
+
+> NOTE: mailer_provider 为 `smtp` 的时候 mailer_options 各项配置的解释详见: [Rails Guides - Action Mailer Configuration](http://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration) 的 `smtp_settings` 配置项（mailer_options 完全等于 smtp_settings）。
 
 Docker 模式，配置 `app.local.env`
 
