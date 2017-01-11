@@ -34,7 +34,6 @@ sudo docker-compose version
 
 ```bash
 git clone https://github.com/ruby-china/homeland-docker.git
-git checkout v2.4.2 # 切换到 stable 版本
 cd homeland-docker/
 ```
 
