@@ -16,5 +16,6 @@ title: Expo - Homeland
 - [Yitai.co](http://yitai.co/)
 - [笨笨鸟公会论坛](http://bbs.teamkn.com)
 - [Kubernetes 中文社区](https://kubernetes.cn/)
+- [0PSi](http://0psi.net)
 
 如果你也用了 Homeland，请在 GitHub 上 <a href="https://github.com/ruby-china/gethomeland.com/issues/new" target="_blank" class="btn btn-primary">告诉我们你在用 Homeland</a>
