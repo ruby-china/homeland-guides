@@ -20,25 +20,25 @@
         <div id="navbarResponsive" class="collapse navbar-toggleable-md">
           <ul class="nav navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/about">关于</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/expo">Expo</a>
+              <a class="nav-link" href="/expo">案例</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/install">Install</a>
+              <a class="nav-link" href="/install">安装</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/docs">Documentation</a>
+              <a class="nav-link" href="https://github.com/ruby-china/homeland/releases">版本发布</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" target="_blank" href="http://try.gethomeland.com">Try It</a>
+              <a class="nav-link" href="/docs">文档</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" target="_blank" href="https://ruby-china.org/topics/node23">Meta</a>
+              <a class="nav-link" target="_blank" href="https://ruby-china.org">社区</a>
             </li>
             <li class="nav-item float-lg-right">
-              <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">Fork on GitHub</a>
+              <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">GitHub</a>
             </li>
           </ul>
         </div>
@@ -61,7 +61,7 @@
     </ul>
   </li>
   <li>
-    Single Sign On <sup>beta</sup>
+    Single Sign On
     <ul>
       <li><a href="/docs/sso/as-client">通过三方应用实现 SSO 登录</a></li>
       <li><a href="/docs/sso/as-provider">提供 SSO 给三方应用</a></li>
@@ -69,6 +69,7 @@
   </li>
   <li><a href="/docs/ssl">开启 SSL/HTTPS 功能</a></li>
 </ul>
+
     </div>
     <div class="col-md-10">
       <h1>Modules</h1>
@@ -108,6 +109,16 @@
 <td></td>
 </tr>
 <tr>
+<td><code>press</code></td>
+<td>头条</td>
+<td></td>
+</tr>
+<tr>
+<td><code>jobs</code></td>
+<td>招聘栏目</td>
+<td></td>
+</tr>
+<tr>
 <td><code>team</code></td>
 <td>团队/组织</td>
 <td></td>
@@ -128,12 +139,14 @@
 
 <pre><code class="yaml">production:
   # all 开启全部
-  modules: home,topic,wiki,site,note,team,github,editor.code
+  modules: home,topic,press,wiki,site,note,team,github,editor.code
 </code></pre>
 
 <blockquote>
 <p>NOTE: 调整 <code>modules</code> 配置项，需要重启应用。</p>
 </blockquote>
+
+<p><code>modules</code> 配置里面的顺序也会影响主导航菜单的顺序，例如，你期望 <code>话题 Wiki 头条</code> 这样的顺序，那只需要调整为 <code>modules: home,topic,wiki,press</code>。</p>
 
     </div>
   </div>
@@ -144,7 +157,9 @@
     <footer>
       <div class="container">
         <p>
-          <span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2016. </p>
+          <span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2016.
+          Hosted by <a href="https://pages.coding.me" target="_blank">Coding Pages</a>
+        </p>
       </div>
     </footer>
   </body>

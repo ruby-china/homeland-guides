@@ -20,25 +20,25 @@
         <div id="navbarResponsive" class="collapse navbar-toggleable-md">
           <ul class="nav navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/about">关于</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/expo">Expo</a>
+              <a class="nav-link" href="/expo">案例</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/install">Install</a>
+              <a class="nav-link" href="/install">安装</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/docs">Documentation</a>
+              <a class="nav-link" href="https://github.com/ruby-china/homeland/releases">版本发布</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" target="_blank" href="http://try.gethomeland.com">Try It</a>
+              <a class="nav-link" href="/docs">文档</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" target="_blank" href="https://ruby-china.org/topics/node23">Meta</a>
+              <a class="nav-link" target="_blank" href="https://ruby-china.org">社区</a>
             </li>
             <li class="nav-item float-lg-right">
-              <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">Fork on GitHub</a>
+              <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">GitHub</a>
             </li>
           </ul>
         </div>
@@ -61,7 +61,7 @@
     </ul>
   </li>
   <li>
-    Single Sign On <sup>beta</sup>
+    Single Sign On
     <ul>
       <li><a href="/docs/sso/as-client">通过三方应用实现 SSO 登录</a></li>
       <li><a href="/docs/sso/as-provider">提供 SSO 给三方应用</a></li>
@@ -69,6 +69,7 @@
   </li>
   <li><a href="/docs/ssl">开启 SSL/HTTPS 功能</a></li>
 </ul>
+
     </div>
     <div class="col-md-10">
       <h1>应用程序配置</h1>
@@ -125,7 +126,7 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 </tr>
 <tr>
 <td>admin_emails</td>
-<td>管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限（一行一个）</td>
+<td>管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限（一行一个），默认 <code>admin@admin.com</code></td>
 <td></td>
 </tr>
 <tr>
@@ -172,10 +173,21 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 
 <h2>用户资料可选项</h2>
 
-<p>你可以根据实际需要开启某些用户字段
-| 配置项 |      解释      | 需要重启? |
-|--------|--------------|----------------|
-| profile_fields | 配置用户资料开启的字段，默认 all 开启全部 | 是 |</p>
+<p>你可以根据实际需要开启某些用户字段</p>
+
+<table><thead>
+<tr>
+<th>配置项</th>
+<th>解释</th>
+<th>需要重启?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>profile_fields</td>
+<td>配置用户资料开启的字段，默认 all 开启全部</td>
+<td>是</td>
+</tr>
+</tbody></table>
 
 <h4>可选值:</h4>
 
@@ -185,7 +197,6 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <li>website - 个人网站</li>
 <li>tagline - 签名</li>
 <li>location - 城市</li>
-<li>hr - HR 功能，HR 具有直接发帖权限，以及有特别的标示图表</li>
 <li>alipay - 支付宝账号</li>
 <li>paypal - PayPal 账号</li>
 <li>qq - QQ 号</li>
@@ -322,6 +333,10 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <td>newbie_notices</td>
 <td>新手等级的会员将会看到的提示信息（HTML 语法)</td>
 </tr>
+<tr>
+<td>ban_reasons</td>
+<td>屏蔽原因，将会在屏蔽话题的时候作为选项（一行一个）</td>
+</tr>
 </tbody></table>
 
     </div>
@@ -333,7 +348,9 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
     <footer>
       <div class="container">
         <p>
-          <span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2016. </p>
+          <span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2016.
+          Hosted by <a href="https://pages.coding.me" target="_blank">Coding Pages</a>
+        </p>
       </div>
     </footer>
   </body>
