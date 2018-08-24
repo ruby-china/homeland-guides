@@ -20,7 +20,7 @@ Homeland Docker
 下面的脚本是针对 Ubuntu Server 14.04 设计的，其他版本，请查阅 [Docker 官方的安装文档](https://docker.github.io/engine/installation/linux/)。
 
 ```bash
-curl -sSL https://git.io/vPALl | bash
+curl -sSL https://git.io/install-docker | bash
 ```
 
 测试是否安装成功：
@@ -41,11 +41,31 @@ cd homeland-docker/
 
 Homeland 的应用程序配置主要基于 `app.local.env` 文件，请参考 `app.default.env`，以及阅读 [Config File](/docs/configuration/config-file/) 理解各项配置信息的含义，根据自己的需要调整。
 
-> NOTE: Docker 模式依靠环境变量文件 `app.local.env` 来配置应用，理论上你不需要修改 `config/config.yml`，除非你知道如何配置。
+> NOTE: Docker 模式依靠环境变量文件 `app.local.env` (此文件需要手工创建) 来配置应用，理论上你不需要修改 `config/config.yml`，除非你知道如何配置。
 
 默认情况下，Homeland 自带了基础的配置，但你仍然需要进行一系列的配置以后才可正常使用所有功能。
 
-### 编译环境
+**必要设置**
+
+请修改 `app.local.env` 做一些必要的设置
+
+1. 增加 `app_name` 设置网站名称；
+2. 增加 `domain` 设置网站的域名（并确保域名 DNS 绑定到你的主机的 IP）
+3. 增加 `admin_emails`，增加一个管理员 Email （多个管理员 Email，用英文逗号分隔）。
+
+`app.local.env` 配置例如：
+
+```conf
+app_name=网站名称
+domain=your-host.com
+# 默认 admin@admin.com，你可以按你的需要修改，这里设置可以覆盖默认配置
+admin_emails=admin@admin.com
+```
+
+> 稍后等 Web 服务启动起来以后，你可以用这个 Email 来注册一个新账号，新账号将会有管理员权限。
+
+
+## 编译环境
 
 > 前面的脚本安装以后，docker 需要用 `sudo` 来执行，切记！
 
@@ -53,11 +73,19 @@ Homeland 的应用程序配置主要基于 `app.local.env` 文件，请参考 `a
 sudo make install
 ```
 
-### 启动
+## 启动
 
 ```bash
 sudo make start
 ```
+
+然后服务将会以 80, 443 端口的方式跑在你的服务器上，Nginx 什么的都已经配置好了，你只需要访问你之前配置的域名即可（别忘了域名解析配置到你的服务器 IP 哦），例如 http://your-host.com
+
+## 注册管理员
+
+打开网站，并打开注册页面，用刚才设定的 `admin_emails` 的 Email 账号（如果没有设置，可以使用默认的 `admin@admin.com`）注册新账号，完成步骤，并登陆以后，你可以点击 “导航栏” 右侧的 “用户头像”，弹出下拉菜单，并点击 “后台”，进入到管理后台界面。
+
+或者可以直接访问 http://your-host.com/admin 进入管理后台。
 
 ## 命令列表
 

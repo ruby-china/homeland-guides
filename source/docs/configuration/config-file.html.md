@@ -25,7 +25,7 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | domain | 网站域名，例如 www.foo.com | 是 |
 | https | 开启 Homeland 的 SSL 功能（出了开启此项，还别忘了要对 Web 服务配置 SSL） | 是 |
 | asset_host | 自定义网站静态资源文件的 Host，保持为空将不启用 | 是 |
-| admin_emails | 管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限（一行一个） | |
+| admin_emails | 管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限（一行一个），默认 `admin@admin.com` | |
 | google_analytics_key | Google Analytics 统计的 key | |
 | mailer_provider | 邮件发送方式: [`smtp`, `postmark`] | 是 |
 | mailer_sender | 邮件通知发件人 | 是 |
@@ -38,7 +38,8 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 ## 用户资料可选项
 
 你可以根据实际需要开启某些用户字段
-| 配置项 |      解释      | 需要重启? |
+
+| 配置项  | 解释          | 需要重启?       |
 |--------|--------------|----------------|
 | profile_fields | 配置用户资料开启的字段，默认 all 开启全部 | 是 |
 
@@ -49,7 +50,6 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 - website - 个人网站
 - tagline - 签名
 - location - 城市
-- hr - HR 功能，HR 具有直接发帖权限，以及有特别的标示图表
 - alipay - 支付宝账号
 - paypal - PayPal 账号
 - qq - QQ 号
@@ -108,6 +108,7 @@ Homeland 允许你在一些重要位置自由编写 HTML，以适应不同的应
 | topic_index_sidebar_html | 论坛话题列表首页 (/topics) 右侧边栏自定义 HTML |
 | custom_head_html | 页面 HTML `<head></head>` 区域自定义 HTML，你可以在这里写 CSS 覆盖，SEO 信息等等 |
 | newbie_notices | 新手等级的会员将会看到的提示信息（HTML 语法) |
+| ban_reasons | 屏蔽原因，将会在屏蔽话题的时候作为选项（一行一个）|
 
 
 

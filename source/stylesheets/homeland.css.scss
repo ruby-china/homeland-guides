@@ -103,6 +103,13 @@ footer {
   }
 
   p:last-child { margin-bottom: 0; }
+
+  a {
+    color: #929292;
+  }
+  a:hover {
+    color: #888;
+  }
 }
 
 #welcome {
