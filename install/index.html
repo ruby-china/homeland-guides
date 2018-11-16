@@ -71,8 +71,8 @@
 
 <p>测试是否安装成功：</p>
 
-<pre><code class="bash">$ sudo docker info
-$ sudo docker-compose version
+<pre><code class="bash">sudo docker info
+sudo docker-compose version
 </code></pre>
 
 <h3>获取 homeland-docker 的项目</h3>
@@ -119,12 +119,12 @@ admin_emails=admin@admin.com
 <p>前面的脚本安装以后，docker 需要用 <code>sudo</code> 来执行，切记！</p>
 </blockquote>
 
-<pre><code class="bash">$ sudo make install
+<pre><code class="bash">sudo make install
 </code></pre>
 
 <h2>启动</h2>
 
-<pre><code class="bash">$ sudo make start
+<pre><code class="bash">sudo make start
 </code></pre>
 
 <p>然后服务将会以 80, 443 端口的方式跑在你的服务器上，Nginx 什么的都已经配置好了，你只需要访问你之前配置的域名即可（别忘了域名解析配置到你的服务器 IP 哦），例如 <a href="http://your-host.com">http://your-host.com</a></p>
@@ -134,58 +134,6 @@ admin_emails=admin@admin.com
 <p>打开网站，并打开注册页面，用刚才设定的 <code>admin_emails</code> 的 Email 账号（如果没有设置，可以使用默认的 <code>admin@admin.com</code>）注册新账号，完成步骤，并登陆以后，你可以点击 “导航栏” 右侧的 “用户头像”，弹出下拉菜单，并点击 “后台”，进入到管理后台界面。</p>
 
 <p>或者可以直接访问 <a href="http://your-host.com/admin">http://your-host.com/admin</a> 进入管理后台。</p>
-
-<h2>更新发布</h2>
-
-<p>当 Homeland 有新版本更新的时候，你可以通过 <code>make update</code> 命令来执行更新</p>
-
-<pre><code class="bash">$ sudo make update
-</code></pre>
-
-<h2>回滚发布</h2>
-
-<p>每次  <code>make update</code> 之前，发布工具会将当前使用的版本创建出一个 Docker Tag，如果你在 update 完以后发现有问题，可以使用 rollback 来回滚到之前指定的版本:</p>
-
-<pre><code class="bash">$ IMAGE_VERSION=xxxxx make update
-</code></pre>
-
-<p>指定 <code>IMAGE_VERSION</code> 为一个正确的 homeland/homeland 的 Docker Image Tag，你可以执行 docker images | grep homeland 来找到</p>
-
-<p>比如:</p>
-
-<pre><code class="bash">$ docker images | grep homeland
-homeland/homeland   latest              ad2de2c7c590        18 hours ago        810MB
-homeland/homeland   20181014234815      28e63ff8be7e        18 hours ago        810MB
-homeland/homeland   20181013234815      f36618189b95        18 hours ago        810MB
-homeland/homeland   &lt;none&gt;              f36618189b95        19 hours ago        722MB
-homeland/homeland   3.1.3               fd411d6e780d        4 weeks ago         1.17GB
-</code></pre>
-
-<p>上面可以通过日期来确定上一次正确的 Tag，例如我们找到 <code>20181014234815</code> 这个:</p>
-
-<pre><code class="bash">$ IMAGE_VERSION=20181014234815 make rollback
-Rollbacking...
-version: 20181017170056
-Stopping homeland_app ... done
-Recreating homeland_app ... done
-Stopping homeland_app_backup ... done
-Stopping homeland_worker     ... done
-Recreating homeland_app_backup ... done
-Recreating homeland_worker     ... done
-Stopping homeland_web ... done
-Recreating homeland_web ... done
-Rollback successed.
-
-9300e5a490f9        homeland/homeland:20181014234815   &quot;/etc/nginx/start&quot;       1 second ago        Up Less than a second   0.0.0.0:80-&gt;80/tcp, 0.0.0.0:443-&gt;443/tcp           homeland_web
-b9d6ccdd5720        homeland/homeland:20181014234815   &quot;bundle exec sidekiq…&quot;   15 seconds ago      Up 14 seconds                                                              homeland_worker
-e823a886d795        homeland/homeland:20181014234815   &quot;bundle exec puma -C…&quot;   15 seconds ago      Up 14 seconds           0.0.0.0:7001-&gt;7001/tcp                             homeland_app_backup
-17d1174888ad        homeland/homeland:20181014234815   &quot;/home/app/homeland/…&quot;   41 seconds ago      Up 39 seconds           0.0.0.0:7000-&gt;7000/tcp                             homeland_app
-ff71d244dba0        elasticsearch:5-alpine             &quot;/docker-entrypoint.…&quot;   4 minutes ago       Up 4 minutes            0.0.0.0:32772-&gt;9200/tcp, 0.0.0.0:32771-&gt;9300/tcp   homeland_elasticsearch
-4cb67a374205        postgres:9.5-alpine                &quot;docker-entrypoint.s…&quot;   4 minutes ago       Up 4 minutes            0.0.0.0:5432-&gt;5432/tcp                             homeland_postgresql
-3e29b2b1b367        redis:3.2.7-alpine                 &quot;docker-entrypoint.s…&quot;   4 minutes ago       Up 4 minutes            0.0.0.0:6379-&gt;6379/tcp                             homeland_redis
-</code></pre>
-
-<p>最后打印的结果就是当前启动的服务所采用的 Docker Image，可以通过上面的 Docker Image Tag 来确定我们回滚是否成功。</p>
 
 <h2>命令列表</h2>
 
@@ -238,10 +186,6 @@ ff71d244dba0        elasticsearch:5-alpine             &quot;/docker-entrypoint.
 <tr>
 <td>make reindex</td>
 <td>重建搜索索引</td>
-</tr>
-<tr>
-<td>make rollback</td>
-<td>回滚到之前指定的一个版本（ Docker Tag）</td>
 </tr>
 </tbody></table>
 
