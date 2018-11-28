@@ -99,16 +99,27 @@ defaults: &defaults
   upload_aliyun_area: "cn-shanghai"
 ```
 
+## Qinniu
+
+```conf
+upload_provider=qiniu
+upload_access_id=your-qiniu-access-key
+upload_access_secret=your-qiniu-secret-key
+upload_bucket=your-qiniu-bucket-name
+upload_url=http://your.qiniu.domian.name.com
+```
+
 ## 图片缩略图
 
 Hoemeland 上传图片需要依赖云服务的图片缩略图功能。
 
 - UpYun: [云处理](http://docs.upyun.com/guide/#_12) - 需进入 UpYun 管理后台配置缩略图版本。
 - Aliyun: [图片处理](https://help.aliyun.com/document_detail/44688.html) - 无须配置。
+- Qiniu: [图片处理](https://developer.qiniu.com/dora/manual/1279/basic-processing-images-imageview2) - 无须配置。
 
 ### 开启 **间隔标识符**
 
-UpYun 使用感叹号 `!` (应该默认已开启)， `Aliyun` 无需配置，Homeland 内置支持。
+UpYun 使用感叹号 `!` (应该默认已开启)， `Aliyun` 和 `Qiniu` 无需配置，Homeland 内置支持。
 
 ### 缩略图版本
 
