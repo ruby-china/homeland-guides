@@ -77,6 +77,8 @@ upload_url=http://your-bucket.b0.upaiyun.com
 
 config/config.yml
 
+> 创建 Bucket 的时候，请选择 `公共读` 模式。
+
 Aliyun OSS 相比 UpYun 多了两项配置:
 
 | 配置项 | 解释 | 需要重启? |
