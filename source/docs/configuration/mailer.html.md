@@ -29,7 +29,7 @@ default: &default
     domain: 'your-domain.com'
     user_name: 'no-reply@your-domain.com'
     password: 'your-password'
-    authentication: 'plain'
+    authentication: 'login'
     enable_starttls_auto: true
     # openssl_verify_mode: true
 ```
@@ -46,7 +46,7 @@ mailer_options.port=587
 mailer_options.domain=your-domain.com
 mailer_options.user_name=no-reply@your-domain.com
 mailer_options.password=your-password
-mailer_options.authentication=plain
+mailer_options.authentication=login
 mailer_options.enable_starttls_auto=true
 ````
 
