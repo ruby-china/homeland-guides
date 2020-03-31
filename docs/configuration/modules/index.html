@@ -89,36 +89,6 @@
 <td>禁用此项，首页直接指向话题列表</td>
 </tr>
 <tr>
-<td><code>topic</code></td>
-<td>话题/论坛</td>
-<td>基本功能，不可关闭</td>
-</tr>
-<tr>
-<td><code>wiki</code></td>
-<td>百科</td>
-<td></td>
-</tr>
-<tr>
-<td><code>site</code></td>
-<td>酷站</td>
-<td></td>
-</tr>
-<tr>
-<td><code>note</code></td>
-<td>记事本</td>
-<td></td>
-</tr>
-<tr>
-<td><code>press</code></td>
-<td>头条</td>
-<td></td>
-</tr>
-<tr>
-<td><code>jobs</code></td>
-<td>招聘栏目</td>
-<td></td>
-</tr>
-<tr>
 <td><code>team</code></td>
 <td>团队/组织</td>
 <td></td>
@@ -139,14 +109,12 @@
 
 <pre><code class="yaml">production:
   # all 开启全部
-  modules: home,topic,press,wiki,site,note,team,github,editor.code
+  modules: home,team,github,editor.code
 </code></pre>
 
 <blockquote>
 <p>NOTE: 调整 <code>modules</code> 配置项，需要重启应用。</p>
 </blockquote>
-
-<p><code>modules</code> 配置里面的顺序也会影响主导航菜单的顺序，例如，你期望 <code>话题 Wiki 头条</code> 这样的顺序，那只需要调整为 <code>modules: home,topic,wiki,press</code>。</p>
 
     </div>
   </div>
