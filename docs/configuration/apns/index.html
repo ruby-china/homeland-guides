@@ -6,11 +6,11 @@
     <link rel="icon" href="/images/favicon.png">
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>邮件服务配置</title>
+    <title>Apple Push Notification 配置</title>
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
     <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
   </head>
-  <body class="docs docs_configuration docs_configuration_mailer docs_configuration_mailer_index">
+  <body class="docs docs_configuration docs_configuration_apns docs_configuration_apns_index">
     <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
       <div class="container">
         <a class="navbar-brand" href="/"><img src="/images/icon-inverse.svg" alt="Homeland" /></a>
@@ -69,72 +69,51 @@
 
     </div>
     <div class="col-md-9">
-      <h1>邮件服务配置</h1>
+      <h1>Apple Push Notification 配置</h1>
 
-<p>Homeland 会有一系列的邮件通知，例如：注册成功、找回密码、账号锁定 等...</p>
+<p>Homeland 有开源的 iOS 客户端，你可以自行打包并发布 iOS App。</p>
 
-<p>你需要在准备好邮件发送服务，可以是：</p>
+<p><a href="https://github.com/ruby-china/ruby-china-ios">https://github.com/ruby-china/ruby-china-ios</a></p>
 
-<ul>
-<li><a href="https://postmarkapp.com">Postmark</a> - 一个国外的邮件发送服务</li>
-<li>SMTP - 几乎所有的邮件服务提供商都支持 SMTP 的方式</li>
-</ul>
+<h2>配置 Apple Push 通知</h2>
 
-<h2>SMTP 配置</h2>
+<p>访问 <a href="https://developer.apple.com/account">https://developer.apple.com/account</a></p>
 
-<p>你可以寻找一个支持邮件发送服务器的地方，注册一个自己网站域名的 SMTP 服务，并参考下面的配置（Gmail）：</p>
+<p>进入 <strong>Certificates, Identifiers &amp; Profiles</strong> / <a href="https://developer.apple.com/account/resources/certificates/add">Create a New Certificate</a></p>
 
-<blockquote>
-<p>NOTE: 参考 Gmail 官方 <a href="https://support.google.com/mail/answer/7126229?hl=zh-Hans">SMTP 配置指导</a></p>
-</blockquote>
+<p>并选择 <strong>Services</strong> / <strong>Apple Push Notification service SSL (Sandbox &amp; Production)</strong>，然后点击 “Continue” 按钮进入下一步。</p>
 
-<p>普通模式配置: <code>config/config.yml</code></p>
+<p>下一步，从下拉列表选择 App ID，比如 Ruby China 的是：“A38T799N53.org.ruby-china.app”。</p>
 
-<pre><code class="yml">default: &amp;default
-  mailer_provider: &#39;smtp&#39;
-  mailer_sender: &#39;no-relay@your-domain.com&#39;
-  mailer_options:
-    address: &#39;smtp.gmail.com&#39;
-    port: 587
-    domain: &#39;your-domain.com&#39;
-    user_name: &#39;no-reply@your-domain.com&#39;
-    password: &#39;your-password&#39;
-    authentication: &#39;login&#39;
-    enable_starttls_auto: true
-    # openssl_verify_mode: true
+<p>Upload a Certificate Signing Request 这个步骤，你需要在 macOS 里面打开 “钥匙串访问”，并在点击主菜单 / 证书助理 / 从证书颁发机构请求证书。</p>
+
+<p>在证书对话框输入电子邮件地址，然后请求是：选择存储到磁盘，这样我们可以得到一个 <code>CertificateSigningRequest.certSigningRequest</code>。</p>
+
+<p>回到刚才的 Apple 网页，点击 “Choose File” 选择 <code>CertificateSigningRequest.certSigningRequest</code> 上传，并点击 “Continue”。</p>
+
+<p>这样你就完成了证书申请，点击 “Download”，你可以获得一个 <code>aps.cer</code>。</p>
+
+<h2>生成 Homeland 需要的证书信息</h2>
+
+<p>在 Finder 里面找到 <code>aps.cer</code> 双击导入到 “钥匙串访问”，然后我们到 “钥匙串访问” 里面找到它（我的证书 里面）。</p>
+
+<p>选中刚才导入的证书，从右键菜单中点击 “导出证书”，并选择文件格式：“个人信息交换 (.p12)”，存储为 <code>cert.p12</code>，并不要设置密码。</p>
+
+<p>现在你会获得一个 <code>cert.p12</code>。</p>
+
+<h3>导出 pem 文件</h3>
+
+<p>打开终端，进入 <code>cert.p12</code> 所在的目录，并执行，将 <code>p12</code> 转换为 <code>cert.pem</code>：</p>
+
+<pre><code class="bash">$ openssl pkcs12 -in cert.p12 -out cert.pem -nodes -clcerts
 </code></pre>
 
-<blockquote>
-<p>NOTE: mailer_provider 为 <code>smtp</code> 的时候 mailer_options 各项配置的解释详见: <a href="http://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration">Rails Guides - Action Mailer Configuration</a> 的 <code>smtp_settings</code> 配置项（mailer_options 完全等于 smtp_settings）。</p>
-</blockquote>
+<p>查看 <code>cert.pem</code> 的内容（也可以用文本编辑器打开）：</p>
 
-<p>Docker 模式，配置 <code>app.local.env</code></p>
-
-<pre><code class="conf">mailer_provider=smtp
-mailer_sender=no-reply@your-domain.com
-mailer_options.address=smtp.gmail.com
-mailer_options.port=587
-mailer_options.domain=your-domain.com
-mailer_options.user_name=no-reply@your-domain.com
-mailer_options.password=your-password
-mailer_options.authentication=login
-mailer_options.enable_starttls_auto=true
+<pre><code class="bash">$ cat cert.pem
 </code></pre>
 
-<h2>Postmark</h2>
-
-<p>访问 <a href="https://postmarkapp.com">Postmark</a> 官方网站注册，并购买邮件服务，并获得 <code>app_key</code></p>
-
-<pre><code class="yml">default: &amp;default
-  mailer_provider: &#39;postmark&#39;
-  mailer_sender: &#39;no-relay@your-domain.com&#39;
-  mailer_options:
-    api_key: &#39;your-postmark-api-key&#39;
-</code></pre>
-
-<h2>如何测试</h2>
-
-<p>你只需要启动应用，并尝试找回密码功能，看看邮件是否正确收到。</p>
+<p>复制 <code>cert.pem</code> 的全部内容，将它配置到 Homeland 后台的 <strong>全局设置</strong> / <strong>apns_pem</strong> 配置项里面，并保存。</p>
 
     </div>
   </div>
