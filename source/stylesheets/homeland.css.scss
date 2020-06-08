@@ -1,9 +1,11 @@
 @charset "utf-8";
 
-$blue: #356DD0;
-$yellow: #FF9800;
+$blue: #356dd0;
+$yellow: #ff9800;
 
-sup { color: $yellow; }
+sup {
+  color: $yellow;
+}
 
 body {
   background: #444;
@@ -26,21 +28,24 @@ body {
 
   .navbar-brand {
     padding: 0;
-    margin-right: 30px; font-size: 1.5em;
-    img { height: 48px; margin-top: -4px; }
+    margin-right: 30px;
+    font-size: 1.5em;
+    img {
+      height: 48px;
+      margin-top: -4px;
+    }
   }
   .navbar-nav .nav-link {
     padding-left: 10px;
     padding-right: 10px;
   }
 
-
   .navbar-toggler {
     outline: 0;
     padding: 0;
     width: 40px;
     height: 40px;
-    background-size:  36px 36px;
+    background-size: 36px 36px;
     border: 0px;
   }
 }
@@ -48,7 +53,7 @@ body {
 #main {
   padding: 40px 0;
   min-height: 100px;
-  background: #FFF;
+  background: #fff;
 
   @media (min-width: 960px) {
     min-height: 500px;
@@ -60,20 +65,33 @@ p {
   margin-bottom: 1.2em;
 }
 
-h1, h2, h3 { line-height: 2em; }
-h4, h5, h6 { line-height: 1.5em; }
-h1 { text-align: center; }
+h1,
+h2,
+h3 {
+  line-height: 2em;
+}
+h4,
+h5,
+h6 {
+  line-height: 1.5em;
+}
+h1 {
+  text-align: center;
+}
 
-ul, ol {
-  li { line-height: 2em; }
+ul,
+ol {
+  li {
+    line-height: 2em;
+  }
 }
 
 blockquote {
-  border-left: 5px solid #F3F4FE;
+  border-left: 5px solid #f3f4fe;
   padding-left: 20px;
 }
 pre {
-  background: #F3F4FE;
+  background: #f3f4fe;
   code {
     font-family: monaco;
     display: block;
@@ -90,7 +108,10 @@ table {
     color: #666;
   }
   th,
-  td { padding: 0.5em; border-bottom: 1px solid #eee;}
+  td {
+    padding: 0.5em;
+    border-bottom: 1px solid #eee;
+  }
 }
 
 footer {
@@ -99,10 +120,16 @@ footer {
 
   .dark-logo {
     margin-right: 10px;
-    img { height: 26px; margin-bottom: 3px; color: #FFF; }
+    img {
+      height: 26px;
+      margin-bottom: 3px;
+      color: #fff;
+    }
   }
 
-  p:last-child { margin-bottom: 0; }
+  p:last-child {
+    margin-bottom: 0;
+  }
 
   a {
     color: #929292;
@@ -116,13 +143,21 @@ footer {
   text-align: center;
   padding: 40px 0;
   h1 {
-    img { width: 500px; max-width: 80%; }
+    img {
+      width: 500px;
+      max-width: 80%;
+    }
   }
-  .sub-title { font-size: 1.2em; margin-bottom: 10px; }
+  .sub-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
 
   #try-button {
     margin-top: 20px;
-    .btn-primary { margin-right: 10px; }
+    .btn-primary {
+      margin-right: 10px;
+    }
     .btn-lg {
       border-radius: 120px;
       font-size: 1em;
@@ -130,10 +165,15 @@ footer {
   }
 
   @media (min-width: 960px) {
-    .sub-title { font-size: 2.3em; margin-bottom: 20px; }
+    .sub-title {
+      font-size: 2.3em;
+      margin-bottom: 20px;
+    }
     #try-button {
       margin-top: 50px;
-      .btn-primary { margin-right: 40px; }
+      .btn-primary {
+        margin-right: 40px;
+      }
       .btn-lg {
         font-size: 2em;
       }
@@ -144,17 +184,23 @@ footer {
 .home-features {
   border-top: 2px dashed #eee;
   padding: 40px 0;
-  h3 { font-size: 1.5em; color: $blue; }
-  p { margin: 0; }
+  h3 {
+    font-size: 1.5em;
+    color: $blue;
+  }
+  p {
+    margin: 0;
+  }
 }
 
 .doc-menu {
   ul {
     padding-left: 0px;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 10px;
+    list-style-type: none;
     ul {
-      font-size: 12px;
+      font-size: 15px;
     }
   }
 }

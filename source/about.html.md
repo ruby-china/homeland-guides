@@ -18,13 +18,6 @@ Homeland 能帮助你快速的构建一个论坛系统，你只需要几步安�
 
 * [Contributors](https://github.com/ruby-china/homeland/contributors)
 
-## 额外感谢
-
-* [Twitter Bootstrap](https://twitter.github.com/bootstrap)
-* [Font Awesome](http://fortawesome.github.io/Font-Awesome/icons/)
-* Forked from [Homeland Project](https://github.com/huacnlee/homeland)
-* Theme from [Mediom](https://github.com/huacnlee/mediom)
-
 ## Logo
 
 - <a href="/images/icon.svg">普通版本</a>
