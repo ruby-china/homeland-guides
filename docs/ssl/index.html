@@ -1,50 +1,53 @@
 <!doctype html>
 <html>
-  <head>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta charset="utf-8">
-    <link rel="icon" href="/images/favicon.png">
-    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-    <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Homeland</title>
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
-    <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
-  </head>
-  <body class="docs docs_ssl docs_ssl_index">
-    <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
-      <div class="container">
-        <a class="navbar-brand" href="/"><img src="/images/icon-inverse.svg" alt="Homeland" /></a>
-        <div id="navbarResponsive" class="collapse navbar-toggleable-md">
-          <ul class="nav navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/about">关于</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/expo">案例</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/install">安装</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://github.com/ruby-china/homeland/blob/master/CHANGELOG.md">版本发布</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/docs">文档</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" target="_blank" href="https://ruby-china.org">社区</a>
-            </li>
-            <li class="nav-item float-lg-right">
-              <a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">GitHub</a>
-            </li>
-          </ul>
-        </div>
-        <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"></button>
-      </div>
-    </nav>
-    <div id="main">
-      <div class="container">
-          <div class="row">
+<head>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta charset="utf-8">
+<link rel="icon" href="/images/favicon.png">
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<!-- Use title if it's in the page YAML frontmatter -->
+<title>Homeland</title>
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
+<script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
+</head>
+<body class="docs docs_ssl docs_ssl_index">
+<nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
+<div class="container">
+<a class="navbar-brand" href="/"><img src="/images/icon-inverse.svg" alt="Homeland" /></a>
+<div id="navbarResponsive" class="collapse navbar-toggleable-md">
+<ul class="nav navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="/about">关于</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/expo">案例</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/install">安装</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/ruby-china/homeland/blob/master/CHANGELOG.md">版本发布</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/docs">文档</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://api.ruby-china.org">API</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" target="_blank" href="https://ruby-china.org">社区</a>
+</li>
+<li class="nav-item float-lg-right">
+<a class="nav-link btn btn-outline-success" href="http://github.com/ruby-china/homeland" target="_blank">GitHub</a>
+</li>
+</ul>
+</div>
+<button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"></button>
+</div>
+</nav>
+<div id="main">
+<div class="container">
+  <div class="row">
     <div class="col-md-3 doc-menu">
       <ul>
   <li>
@@ -82,10 +85,14 @@
 <h2>准备</h2>
 
 <ol>
-<li>确定 <code>app.local.env</code> 里面有正确配置 <code>domain</code> 为你的域名。</li>
+<li>确定 <code>app.local.env</code> 里面有正确配置 <code>cert_domain</code> 为你的域名，<code>cert_domain</code> 为 SSL 申请证书的域名。</li>
 <li>确保域名正确绑定到服务器上，并能访问打开；</li>
 <li>一定确保网站服务器能用，因为 SSL 申请过程，需要请求网站 <a href="http://your-domain/.well-known">http://your-domain/.well-known</a> 路径，如果无法访问，后面的流程将会失败。</li>
 </ol>
+
+<blockquote>
+<p>注意，<code>cert_domain</code> 配置是专门用于申请 SSL 证书的，单独有此项配置的原因是你可能需要申请泛域名，比如配置为 <code>cert_domain=*.ruby-china.org</code>。你需要确保他和 <code>domain</code> 配置是同一个域名，比如 <code>domain=ruby-china.org</code>。</p>
+</blockquote>
 
 <h2>申请安装 SSL 正确</h2>
 
@@ -128,14 +135,14 @@ And then restart by run: make restart
     </div>
   </div>
 
-      </div>
-    </div>
-    <footer>
-      <div class="container">
-        <p>
-          <span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2020.
-        </p>
-      </div>
-    </footer>
-  </body>
+</div>
+</div>
+<footer>
+<div class="container">
+<p>
+<span class="dark-logo"><img src="/images/icon-inverse.svg" alt="Homeland" /></span> &copy; Homeland 2020.
+</p>
+</div>
+</footer>
+</body>
 </html>
