@@ -8,9 +8,11 @@ Homeland 内建 [Let's Encrypt](https://letsencrypt.org) 的 SSL 证书申请流
 
 ## 准备
 
-1. 确定 `app.local.env` 里面有正确配置 `domain` 为你的域名。
+1. 确定 `app.local.env` 里面有正确配置 `cert_domain` 为你的域名，`cert_domain` 为 SSL 申请证书的域名。
 2. 确保域名正确绑定到服务器上，并能访问打开；
 3. 一定确保网站服务器能用，因为 SSL 申请过程，需要请求网站 http://your-domain/.well-known 路径，如果无法访问，后面的流程将会失败。
+
+> 注意，`cert_domain` 配置是专门用于申请 SSL 证书的，单独有此项配置的原因是你可能需要申请泛域名，比如配置为 `cert_domain=*.ruby-china.org`。你需要确保他和 `domain` 配置是同一个域名，比如 `domain=ruby-china.org`。
 
 ## 申请安装 SSL 正确
 
