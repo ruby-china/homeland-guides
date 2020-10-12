@@ -30,8 +30,12 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | mailer_provider | 邮件发送方式: [`smtp`, `postmark`] | 是 |
 | mailer_sender | 邮件通知发件人 | 是 |
 | mailer_options | 邮件服务详细配置，根据 `mailer_provider` 参数有可能不同，详见 [邮件服务配置](/docs/configuration/mailer) | 是 |
-| github_token | GitHub 三方登录 Application Token | 是 |
-| github_secret | GitHub 三方登录 Application Secret | 是 |
+| github_api_key | GitHub 三方登录 API Key (旧版本配置为: github_token) | 是 |
+| github_api_secret | GitHub 三方登录 API Secret  (旧版本配置为: github_secret) | 是 |
+| twitter_api_key | Twitter 三方登录 API Key | 是 |
+| twitter_api_secret | Twitter 三方登录 API Secret | 是 |
+| wechat_api_key | 微信登录 API Key | 是 |
+| wechat_api_secret | 微信登录 API Secret | 是 |
 | default_locale | 应用程序语言，默认 "zh-CN"，可选 ['zh-CN', 'zh-TW', 'en'] | 是 |
 | auto_locale | 是否自动根据用户浏览器设置，切换到相应的语言, true | false 默认 | 是 |
 
