@@ -11,6 +11,5 @@ title: Expo - Homeland
 * [Coding Style](https://codingstyle.cn)
 * [DiyCode](http://www.diycode.cc)
 * [EthFans](http://ethfans.org)
-* [GopherChina](https://gocn.vip)
 
 如果你也用了 Homeland，请在 GitHub 上 <a href="https://github.com/ruby-china/gethomeland.com/issues/new" target="_blank" class="btn btn-primary">告诉我们你在用 Homeland</a>
