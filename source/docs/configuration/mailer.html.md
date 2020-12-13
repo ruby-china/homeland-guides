@@ -53,7 +53,7 @@ mailer_options.enable_starttls_auto=true
 
 ## Postmark
 
-访问 [Postmark](https://postmarkapp.com) 官方网站注册，并购买邮件服务，并获得 `app_key`
+访问 [Postmark](https://postmarkapp.com) 官方网站注册，并购买邮件服务，并获得 `api_key`
 
 ```yml
 default: &default
