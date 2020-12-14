@@ -100,16 +100,6 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td>app_name</td>
-<td>应用程序名称</td>
-<td>是</td>
-</tr>
-<tr>
-<td>modules</td>
-<td>可拔插组件配置，详见: <a href="/docs/configuration/modules">Modules</a></td>
-<td>是</td>
-</tr>
-<tr>
 <td>domain</td>
 <td>网站域名，例如 <a href="http://www.foo.com">www.foo.com</a></td>
 <td>是</td>
@@ -130,11 +120,6 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <td></td>
 </tr>
 <tr>
-<td>google_analytics_key</td>
-<td>Google Analytics 统计的 key</td>
-<td></td>
-</tr>
-<tr>
 <td>mailer_provider</td>
 <td>邮件发送方式: [<code>smtp</code>, <code>postmark</code>]</td>
 <td>是</td>
@@ -149,80 +134,15 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <td>邮件服务详细配置，根据 <code>mailer_provider</code> 参数有可能不同，详见 <a href="/docs/configuration/mailer">邮件服务配置</a></td>
 <td>是</td>
 </tr>
-<tr>
-<td>github_token</td>
-<td>GitHub 三方登录 Application Token</td>
-<td>是</td>
-</tr>
-<tr>
-<td>github_secret</td>
-<td>GitHub 三方登录 Application Secret</td>
-<td>是</td>
-</tr>
-<tr>
-<td>default_locale</td>
-<td>应用程序语言，默认 &quot;zh-CN&quot;，可选 [&#39;zh-CN&#39;, &#39;zh-TW&#39;, &#39;en&#39;]</td>
-<td>是</td>
-</tr>
-<tr>
-<td>auto_locale</td>
-<td>是否自动根据用户浏览器设置，切换到相应的语言, true</td>
-<td>false 默认</td>
-</tr>
 </tbody></table>
-
-<h2>用户资料可选项</h2>
-
-<p>你可以根据实际需要开启某些用户字段</p>
-
-<table><thead>
-<tr>
-<th>配置项</th>
-<th>解释</th>
-<th>需要重启?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>profile_fields</td>
-<td>配置用户资料开启的字段，默认 all 开启全部</td>
-<td>是</td>
-</tr>
-</tbody></table>
-
-<h4>可选值:</h4>
-
-<ul>
-<li>company - 所在公司</li>
-<li>twitter - Twitter</li>
-<li>website - 个人网站</li>
-<li>tagline - 签名</li>
-<li>location - 城市</li>
-<li>alipay - 支付宝账号</li>
-<li>paypal - PayPal 账号</li>
-<li>qq - QQ 号</li>
-<li>weibo - 微博</li>
-<li>wechat - 微信</li>
-<li>douban - Douban ID</li>
-<li>dingding - 钉钉</li>
-<li>aliwangwang - 阿里旺旺</li>
-<li>facebook - Facebook</li>
-<li>instagram - Instagram</li>
-<li>dribbble - Dribbble</li>
-<li>battle_tag - Battle Tag 战网账号</li>
-<li>psn_id - PSN ID (PS 游戏联网 ID)</li>
-<li>steam_id - Stream ID</li>
-</ul>
-
-<p>例如:</p>
-
-<pre><code class="yml">profile_fields: &#39;twitter,facebook,wechat&#39;
-</code></pre>
 
 <h2>上传附件配置</h2>
 
 <p>详见: <a href="/docs/configuration/upload">Upload Configuration</a></p>
 
-<h2>高级设置</h2>
+<h2>后台配置</h2>
+
+<p>Homeland 可以在应用启动以后，在后台直接配置某些功能，你可以在服务安装完成启动以后，用 <code>admin@admin.com</code> 注册账号，获得管理员权限，然后进入 <strong>后台 - 全局设置</strong> 来修改他们。</p>
 
 <table><thead>
 <tr>
@@ -231,6 +151,31 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <th>需要重启?</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>app_name</td>
+<td>应用程序名称</td>
+<td>是</td>
+</tr>
+<tr>
+<td>modules</td>
+<td>可拔插组件配置，详见: <a href="/docs/configuration/modules">Modules</a></td>
+<td>是</td>
+</tr>
+<tr>
+<td>admin_emails</td>
+<td>管理员 Email 列表，后台设置以后 app.local.env 里面的配置将会被忽略。</td>
+<td></td>
+</tr>
+<tr>
+<td>profile_fields</td>
+<td>配置用户资料开启的字段，默认 all 开启全部</td>
+<td>是</td>
+</tr>
+<tr>
+<td>google_analytics_key</td>
+<td>Google Analytics 统计的 key</td>
+<td></td>
+</tr>
 <tr>
 <td>apns_pem</td>
 <td>iOS - Apple Push Notification 证书，需要自定义 iOS 客户端可以配置此项，请打开 <code>.pem</code> 文件，将文件内容通过管理后台设置进去，.pem 导出方法 <code>openssl pkcs12 -in cert.p12 -out cert.pem -nodes -clcerts</code>，参见: <a href="https://github.com/jpoz/APNS">APNS</a>。</td>
@@ -252,16 +197,6 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <td>是</td>
 </tr>
 <tr>
-<td>rack_attack.limit</td>
-<td>一个周期内单个 IP 的请求次数限制</td>
-<td>是</td>
-</tr>
-<tr>
-<td>rack_attack.period</td>
-<td>多少时间（秒）为一个请求限制周期</td>
-<td>是</td>
-</tr>
-<tr>
 <td>blacklist_ips</td>
 <td>IP 黑名单，里面的 IP 将无法访问</td>
 <td></td>
@@ -280,6 +215,46 @@ NOTE: 非 Docker 模式，配置文件在 <code>config/config.yml</code></p>
 <td>tips</td>
 <td>随机出现的小贴士，一行一个</td>
 <td></td>
+</tr>
+<tr>
+<td>github_api_key</td>
+<td>GitHub 三方登录 API Key (旧版本配置为: github_token)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>github_api_secret</td>
+<td>GitHub 三方登录 API Secret (旧版本配置为: github_secret)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>twitter_api_key</td>
+<td>Twitter 三方登录 API Key</td>
+<td>是</td>
+</tr>
+<tr>
+<td>twitter_api_secret</td>
+<td>Twitter 三方登录 API Secret</td>
+<td>是</td>
+</tr>
+<tr>
+<td>wechat_api_key</td>
+<td>微信登录 API Key</td>
+<td>是</td>
+</tr>
+<tr>
+<td>wechat_api_secret</td>
+<td>微信登录 API Secret</td>
+<td>是</td>
+</tr>
+<tr>
+<td>default_locale</td>
+<td>应用程序语言，默认 &quot;zh-CN&quot;，可选 [&#39;zh-CN&#39;, &#39;zh-TW&#39;, &#39;en&#39;]</td>
+<td>是</td>
+</tr>
+<tr>
+<td>auto_locale</td>
+<td>是否自动根据用户浏览器设置，切换到相应的语言, true</td>
+<td>false 默认</td>
 </tr>
 </tbody></table>
 

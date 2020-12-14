@@ -129,17 +129,6 @@
 <p>File 模式需要 Nginx <a href="http://nginx.org/en/docs/http/ngx_http_image_filter_module.html">image_filter</a> module 配合才能生存缩略图。
 安装比较复杂，如果技能不熟练，请采用 Docker 模式部署。</p>
 
-<p>手工部署请参考 <a href="https://github.com/ruby-china/homeland-docker/blob/master/etc/nginx/">homeland_docker</a> 的配置。</p>
-
-<p>然后配置 <code>config/config.yml</code></p>
-
-<pre><code class="yml">defaults: &amp;defaults
-  # file 的模式，只需要一个配置
-  upload_provider: &quot;file&quot;
-</code></pre>
-
-<p>或 <code>app.local.env</code></p>
-
 <pre><code class="conf"># [uploader]
 upload_provider=file
 # upload_host 留空
@@ -147,18 +136,6 @@ upload_host=
 </code></pre>
 
 <h2>UpYun</h2>
-
-<p>config/config.yml</p>
-
-<pre><code class="yml">defaults: &amp;defaults
-  upload_provider: &quot;upyun&quot;
-  upload_access_id: &quot;username&quot;
-  upload_access_secret: &quot;password&quot;
-  upload_bucket: &quot;your-bucket&quot;
-  upload_url: &quot;http://your-bucket.b0.upaiyun.com&quot;
-</code></pre>
-
-<p>或 <code>app.local.env</code></p>
 
 <pre><code class="conf"># [uploader]
 upload_provider=upyun
@@ -169,8 +146,6 @@ upload_url=http://your-bucket.b0.upaiyun.com
 </code></pre>
 
 <h2>Aliyun OSS</h2>
-
-<p>config/config.yml</p>
 
 <blockquote>
 <p>创建 Bucket 的时候，请选择 <code>公共读</code> 模式。</p>
@@ -199,14 +174,22 @@ upload_url=http://your-bucket.b0.upaiyun.com
 
 <p>例如：</p>
 
-<pre><code class="yml">defaults: &amp;defaults
-  upload_provider: &quot;aliyun&quot;
-  upload_access_id: &quot;access-id&quot;
-  upload_access_secret: &quot;access-secret&quot;
-  upload_bucket: &quot;your-bucket&quot;
-  upload_url: &quot;http://your-bucket.host.com&quot;
-  upload_aliyun_internal: false
-  upload_aliyun_area: &quot;cn-shanghai&quot;
+<pre><code class="conf">upload_provider=aliyun
+upload_access_id=access-id
+upload_access_secret=access-secret
+upload_bucket=your-bucket
+upload_url=http://your-bucket.host.com
+upload_aliyun_internal=false
+upload_aliyun_area=cn-shanghai
+</code></pre>
+
+<h2>Qinniu</h2>
+
+<pre><code class="conf">upload_provider=qiniu
+upload_access_id=your-qiniu-access-key
+upload_access_secret=your-qiniu-secret-key
+upload_bucket=your-qiniu-bucket-name
+upload_url=http://your.qiniu.domian.name.com
 </code></pre>
 
 <h2>图片缩略图</h2>
@@ -216,11 +199,12 @@ upload_url=http://your-bucket.b0.upaiyun.com
 <ul>
 <li>UpYun: <a href="http://docs.upyun.com/guide/#_12">云处理</a> - 需进入 UpYun 管理后台配置缩略图版本。</li>
 <li>Aliyun: <a href="https://help.aliyun.com/document_detail/44688.html">图片处理</a> - 无须配置。</li>
+<li>Qiniu: <a href="https://developer.qiniu.com/dora/manual/1279/basic-processing-images-imageview2">图片处理</a> - 无须配置。</li>
 </ul>
 
 <h3>开启 <strong>间隔标识符</strong></h3>
 
-<p>UpYun 使用感叹号 <code>!</code> (应该默认已开启)， <code>Aliyun</code> 无需配置，Homeland 内置支持。</p>
+<p>UpYun 使用感叹号 <code>!</code> (应该默认已开启)， <code>Aliyun</code> 和 <code>Qiniu</code> 无需配置，Homeland 内置支持。</p>
 
 <h3>缩略图版本</h3>
 

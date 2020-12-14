@@ -89,25 +89,7 @@
 
 <blockquote>
 <p>NOTE: 参考 Gmail 官方 <a href="https://support.google.com/mail/answer/7126229?hl=zh-Hans">SMTP 配置指导</a></p>
-</blockquote>
 
-<p>普通模式配置: <code>config/config.yml</code></p>
-
-<pre><code class="yml">default: &amp;default
-  mailer_provider: &#39;smtp&#39;
-  mailer_sender: &#39;no-relay@your-domain.com&#39;
-  mailer_options:
-    address: &#39;smtp.gmail.com&#39;
-    port: 587
-    domain: &#39;your-domain.com&#39;
-    user_name: &#39;no-reply@your-domain.com&#39;
-    password: &#39;your-password&#39;
-    authentication: &#39;login&#39;
-    enable_starttls_auto: true
-    # openssl_verify_mode: true
-</code></pre>
-
-<blockquote>
 <p>NOTE: mailer_provider 为 <code>smtp</code> 的时候 mailer_options 各项配置的解释详见: <a href="http://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration">Rails Guides - Action Mailer Configuration</a> 的 <code>smtp_settings</code> 配置项（mailer_options 完全等于 smtp_settings）。</p>
 </blockquote>
 
@@ -115,24 +97,22 @@
 
 <pre><code class="conf">mailer_provider=smtp
 mailer_sender=no-reply@your-domain.com
-mailer_options.address=smtp.gmail.com
-mailer_options.port=587
-mailer_options.domain=your-domain.com
-mailer_options.user_name=no-reply@your-domain.com
-mailer_options.password=your-password
-mailer_options.authentication=login
-mailer_options.enable_starttls_auto=true
+mailer_options_address=smtp.gmail.com
+mailer_options_port=587
+mailer_options_domain=your-domain.com
+mailer_options_user_name=no-reply@your-domain.com
+mailer_options_password=your-password
+mailer_options_authentication=login
+mailer_options_enable_starttls_auto=true
 </code></pre>
 
 <h2>Postmark</h2>
 
-<p>访问 <a href="https://postmarkapp.com">Postmark</a> 官方网站注册，并购买邮件服务，并获得 <code>app_key</code></p>
+<p>访问 <a href="https://postmarkapp.com">Postmark</a> 官方网站注册，并购买邮件服务，并获得 <code>api_key</code></p>
 
-<pre><code class="yml">default: &amp;default
-  mailer_provider: &#39;postmark&#39;
-  mailer_sender: &#39;no-relay@your-domain.com&#39;
-  mailer_options:
-    api_key: &#39;your-postmark-api-key&#39;
+<pre><code class="conf">mailer_provider=postmark
+mailer_sender=no-relay@your-domain.com
+mailer_options_api_key=your-postmark-api-key
 </code></pre>
 
 <h2>如何测试</h2>

@@ -95,15 +95,13 @@ cd homeland-docker/
 <p>请修改 <code>app.local.env</code> 做一些必要的设置</p>
 
 <ol>
-<li>增加 <code>app_name</code> 设置网站名称；</li>
 <li>增加 <code>domain</code> 设置网站的域名（并确保域名 DNS 绑定到你的主机的 IP）</li>
 <li>增加 <code>admin_emails</code>，增加一个管理员 Email （多个管理员 Email，用英文逗号分隔）。</li>
 </ol>
 
 <p><code>app.local.env</code> 配置例如：</p>
 
-<pre><code class="conf">app_name=网站名称
-domain=your-host.com
+<pre><code class="conf">domain=your-host.com
 # 默认 admin@admin.com，你可以按你的需要修改，这里设置可以覆盖默认配置
 admin_emails=admin@admin.com
 </code></pre>
