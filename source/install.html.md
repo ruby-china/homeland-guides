@@ -2,8 +2,7 @@
 title: Install Homeland with Docker - Homeland
 ---
 
-Homeland Docker
------------------
+## Homeland Docker
 
 [Homeland](http://gethomeland.com) 基于 Docker 的自动化部署方案。
 
@@ -49,21 +48,18 @@ Homeland 的应用程序配置主要基于 `app.local.env` 文件，请参考 `a
 
 请修改 `app.local.env` 做一些必要的设置
 
-1. 增加 `app_name` 设置网站名称；
-2. 增加 `domain` 设置网站的域名（并确保域名 DNS 绑定到你的主机的 IP）
-3. 增加 `admin_emails`，增加一个管理员 Email （多个管理员 Email，用英文逗号分隔）。
+1. 增加 `domain` 设置网站的域名（并确保域名 DNS 绑定到你的主机的 IP）
+1. 增加 `admin_emails`，增加一个管理员 Email （多个管理员 Email，用英文逗号分隔）。
 
 `app.local.env` 配置例如：
 
 ```conf
-app_name=网站名称
 domain=your-host.com
 # 默认 admin@admin.com，你可以按你的需要修改，这里设置可以覆盖默认配置
 admin_emails=admin@admin.com
 ```
 
 > 稍后等 Web 服务启动起来以后，你可以用这个 Email 来注册一个新账号，新账号将会有管理员权限。
-
 
 ## 编译环境
 
@@ -91,15 +87,15 @@ sudo make start
 
 > 在 Linux 环境里面，前面的脚本安装以后，docker，以及一下这些命令需要用 `sudo` 来执行，切记！
 
-| Command | Desc |
-|---------|------|
-| make install | 首次安装，创建数据库 |
-| make install_ssl | 安装并申请 SSL 证书 (since: 2.5.0) |
-| make update | 更新应用程序，当 `homeland/homeland` 这个 Docker Image 版本变化的时候，需要执行，合并数据库、编译 Assets |
-| make start | 启动所有服务，将会自动启动所有的服务 |
-| make stop | 停止所有服务 |
-| make restart | 硬重启服务 |
-| make status | 查看服务状态 |
-| make console | 进入 Rails 控制台 |
-| make stop-all | 停止所有服务，包括数据库 |
-| make reindex | 重建搜索索引 |
+| Command          | Desc                                                                                                     |
+| ---------------- | -------------------------------------------------------------------------------------------------------- |
+| make install     | 首次安装，创建数据库                                                                                     |
+| make install_ssl | 安装并申请 SSL 证书 (since: 2.5.0)                                                                       |
+| make update      | 更新应用程序，当 `homeland/homeland` 这个 Docker Image 版本变化的时候，需要执行，合并数据库、编译 Assets |
+| make start       | 启动所有服务，将会自动启动所有的服务                                                                     |
+| make stop        | 停止所有服务                                                                                             |
+| make restart     | 硬重启服务                                                                                               |
+| make status      | 查看服务状态                                                                                             |
+| make console     | 进入 Rails 控制台                                                                                        |
+| make stop-all    | 停止所有服务，包括数据库                                                                                 |
+| make reindex     | 重建搜索索引                                                                                             |

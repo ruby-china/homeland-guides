@@ -49,5 +49,3 @@ $ cat cert.pem
 ```
 
 复制 `cert.pem` 的全部内容，将它配置到 Homeland 后台的 **全局设置** / **apns_pem** 配置项里面，并保存。
-
-

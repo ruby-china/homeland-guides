@@ -15,10 +15,10 @@ Homeland 支持 [Single Sign On](https://en.wikipedia.org/wiki/Single_sign-on)�
 
 请参阅 Homeland [配置文档](/docs/configuration/config-file)，并增加下面这些配置:
 
-| 配置项 | 解释 | 需要重启? |
-|--------|--------------|----------------|
-| sso.enable_provider | true 启用 SSO Provider | 是 |
-| sso.secret | sso_secret，三方应用接入 Homeland SSO 登陆需要统一此 sso_secret，请确保两边一致，并注意保密 | 是 |
+| 配置项              | 解释                                                                                        | 需要重启? |
+| ------------------- | ------------------------------------------------------------------------------------------- | --------- |
+| sso_enable_provider | true 启用 SSO Provider                                                                      | 是        |
+| sso_secret          | sso_secret，三方应用接入 Homeland SSO 登陆需要统一此 sso_secret，请确保两边一致，并注意保密 | 是        |
 
 ## 准备
 

@@ -12,13 +12,13 @@ Homeland 目前支持两种文件存储方式：
 
 在部署之前，你需要选择一种，并购买，然后根据下面的文档配置 Homeland。
 
-| 配置项 | 解释 | 需要重启? |
-|--------|--------------|----------------|
-| upload_provider | 文件存储方式 [`file`, `upyun`, `aliyun`] | 是 |
-| upload_access_id | 文件存储 `access_id` 或用户名 | 是 |
-| upload_access_secret | 文件存储 `access_secret` 或密码 | 是 |
-| upload_bucket | 文件存储 Bucket 名称 | 是 |
-| upload_url | 文件存储的 Host | 是 |
+| 配置项               | 解释                                     | 需要重启? |
+| -------------------- | ---------------------------------------- | --------- |
+| upload_provider      | 文件存储方式 [`file`, `upyun`, `aliyun`] | 是        |
+| upload_access_id     | 文件存储 `access_id` 或用户名            | 是        |
+| upload_access_secret | 文件存储 `access_secret` 或密码          | 是        |
+| upload_bucket        | 文件存储 Bucket 名称                     | 是        |
+| upload_url           | 文件存储的 Host                          | 是        |
 
 ## File
 
@@ -29,18 +29,6 @@ Homeland 目前支持两种文件存储方式：
 File 模式需要 Nginx [image_filter](http://nginx.org/en/docs/http/ngx_http_image_filter_module.html) module 配合才能生存缩略图。
 安装比较复杂，如果技能不熟练，请采用 Docker 模式部署。
 
-手工部署请参考 [homeland_docker](https://github.com/ruby-china/homeland-docker/blob/master/etc/nginx/) 的配置。
-
-然后配置 `config/config.yml`
-
-```yml
-defaults: &defaults
-  # file 的模式，只需要一个配置
-  upload_provider: "file"
-```
-
-或 `app.local.env`
-
 ```conf
 # [uploader]
 upload_provider=file
@@ -49,19 +37,6 @@ upload_host=
 ```
 
 ## UpYun
-
-config/config.yml
-
-```yml
-defaults: &defaults
-  upload_provider: "upyun"
-  upload_access_id: "username"
-  upload_access_secret: "password"
-  upload_bucket: "your-bucket"
-  upload_url: "http://your-bucket.b0.upaiyun.com"
-```
-
-或 `app.local.env`
 
 ```conf
 # [uploader]
@@ -72,31 +47,27 @@ upload_bucket=your-bucket
 upload_url=http://your-bucket.b0.upaiyun.com
 ```
 
-
 ## Aliyun OSS
-
-config/config.yml
 
 > 创建 Bucket 的时候，请选择 `公共读` 模式。
 
 Aliyun OSS 相比 UpYun 多了两项配置:
 
-| 配置项 | 解释 | 需要重启? |
-|--------|--------------|----------------|
-| upload_aliyun_internal |  如果是阿里云的服务器，这里设置 true 将能获得更快的上传速度 | 是 |
-| upload_aliyun_area | 阿里云服务器区域，例如: `cn-shanghai` | 是 |
+| 配置项                 | 解释                                                       | 需要重启? |
+| ---------------------- | ---------------------------------------------------------- | --------- |
+| upload_aliyun_internal | 如果是阿里云的服务器，这里设置 true 将能获得更快的上传速度 | 是        |
+| upload_aliyun_area     | 阿里云服务器区域，例如: `cn-shanghai`                      | 是        |
 
 例如：
 
-```yml
-defaults: &defaults
-  upload_provider: "aliyun"
-  upload_access_id: "access-id"
-  upload_access_secret: "access-secret"
-  upload_bucket: "your-bucket"
-  upload_url: "http://your-bucket.host.com"
-  upload_aliyun_internal: false
-  upload_aliyun_area: "cn-shanghai"
+```conf
+upload_provider=aliyun
+upload_access_id=access-id
+upload_access_secret=access-secret
+upload_bucket=your-bucket
+upload_url=http://your-bucket.host.com
+upload_aliyun_internal=false
+upload_aliyun_area=cn-shanghai
 ```
 
 ## Qinniu
@@ -125,24 +96,22 @@ UpYun 使用感叹号 `!` (应该默认已开启)， `Aliyun` 和 `Qiniu` 无需
 
 请在对应的平台管理界面按下面的表格设置 **缩略图版本**：
 
-| 版本名称| 限定尺寸 (px) | 缩略方式           |
-|--------|-----|          ------------------|----
-| large  |1920 |           限定宽度，高度自适应 |
-| lg     |192x192 |        固定宽度和高度      |
-| md     |96x96 |          固定宽度和高度      |
-| sm     |48x48 |          固定宽度和高度      |
-| xs     |32x32 |          固定宽度和高度      |
+| 版本名称 | 限定尺寸 (px) | 缩略方式             |
+| -------- | ------------- | -------------------- |
+| large    | 1920          | 限定宽度，高度自适应 |
+| lg       | 192x192       | 固定宽度和高度       |
+| md       | 96x96         | 固定宽度和高度       |
+| sm       | 48x48         | 固定宽度和高度       |
+| xs       | 32x32         | 固定宽度和高度       |
 
 例如: <a href="/images/docs/upload-version-example.png">UpYun 的部分配置截图</a>
-
 
 ## 开启 CORS 跨域共享
 
 个人设置页面有通过 AJAX 请求强制刷新头像缓存的动作，你需要配置 UpYun 开启 [CORS 跨域共享](http://docs.upyun.com/cdn/feature/#cors) 功能：
 
-| 允许的域 | Methods | Allow Headers | Expose Headers |
-| ------- | ------- | ------------- | -------------- |
-| http://your-host.com | GET, HEAD, OPTIONS | Pragma | Pragma |
+| 允许的域             | Methods            | Allow Headers | Expose Headers |
+| -------------------- | ------------------ | ------------- | -------------- |
+| http://your-host.com | GET, HEAD, OPTIONS | Pragma        | Pragma         |
 
 > NOTE: 允许的域注意 http 还是 https，确保和你正常访问你网站的地址一样，例如: https://ruby-china.org
-

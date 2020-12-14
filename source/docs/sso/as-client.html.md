@@ -37,7 +37,7 @@ end
 
 > NOTE: `SingleSignOn` 类是参考 [Discourse](https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045) 实现的，所以理论上来说 Discourse 支持哪些 SSO 登陆方式，在 Homeland 上面也是有效的。
 
-在你的主应用中提供一个 (`sso.url`) 类似这样的  `http://your-app.com/homeland/sso` 的接口，并实现类似下面的代码：
+在你的主应用中提供一个 (`sso.url`) 类似这样的 `http://your-app.com/homeland/sso` 的接口，并实现类似下面的代码：
 
 ```rb
 class HomelandSsoController < ApplicationController
@@ -64,11 +64,11 @@ end
 
 请参阅 Homeland [配置文档](/docs/configuration/config-file)，并增加下面这些配置:
 
-| 配置项 | 解释 | 需要重启? |
-|--------|--------------|----------------|
-| sso.enable | true 启用 SSO 登陆，请确保 enable_provider 为 false，否则将无效 | 是 |
-| sso.url | 主应用的 SSO 登陆地址 | 是 |
-| sso.secret | 主应用提供的 sso_secret，请确保两边一致，并注意保密 | 是 |
+| 配置项     | 解释                                                            | 需要重启? |
+| ---------- | --------------------------------------------------------------- | --------- |
+| sso_enable | true 启用 SSO 登陆，请确保 enable_provider 为 false，否则将无效 | 是        |
+| sso_url    | 主应用的 SSO 登陆地址                                           | 是        |
+| sso_secret | 主应用提供的 sso_secret，请确保两边一致，并注意保密             | 是        |
 
 ## 各类语言关于 `SingleSignOn` 的实现参考
 

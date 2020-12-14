@@ -16,7 +16,7 @@ Homeland 能帮助你快速的构建一个论坛系统，你只需要几步安�
 
 ## 项目贡献者
 
-* [Contributors](https://github.com/ruby-china/homeland/contributors)
+- [Contributors](https://github.com/ruby-china/homeland/contributors)
 
 ## Logo
 
@@ -28,10 +28,10 @@ Homeland 能帮助你快速的构建一个论坛系统，你只需要几步安�
 
 Released under the MIT license:
 
-* [www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
+- [www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
 
 Emojis under the CC-BY 4.0 license from [Twitter/Twemoji][twemoji]:
 
-* https://github.com/twitter/twemoji#license
+- https://github.com/twitter/twemoji#license
 
 [twemoji]: https://github.com/twitter/twemoji
