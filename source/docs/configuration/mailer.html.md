@@ -41,13 +41,13 @@ Docker 模式，配置 `app.local.env`
 ```conf
 mailer_provider=smtp
 mailer_sender=no-reply@your-domain.com
-mailer_options.address=smtp.gmail.com
-mailer_options.port=587
-mailer_options.domain=your-domain.com
-mailer_options.user_name=no-reply@your-domain.com
-mailer_options.password=your-password
-mailer_options.authentication=login
-mailer_options.enable_starttls_auto=true
+mailer_options_address=smtp.gmail.com
+mailer_options_port=587
+mailer_options_domain=your-domain.com
+mailer_options_user_name=no-reply@your-domain.com
+mailer_options_password=your-password
+mailer_options_authentication=login
+mailer_options_enable_starttls_auto=true
 ````
 
 
