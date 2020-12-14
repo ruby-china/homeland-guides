@@ -56,7 +56,7 @@ Aliyun OSS 相比 UpYun 多了两项配置:
 | 配置项                 | 解释                                                       | 需要重启? |
 | ---------------------- | ---------------------------------------------------------- | --------- |
 | upload_aliyun_internal | 如果是阿里云的服务器，这里设置 true 将能获得更快的上传速度 | 是        |
-| upload_aliyun_area     | 阿里云服务器区域，例如: `cn-shanghai`                      | 是        |
+| upload_aliyun_region   | 阿里云服务器区域，例如: `cn-shanghai`                      | 是        |
 
 例如：
 
@@ -67,7 +67,7 @@ upload_access_secret=access-secret
 upload_bucket=your-bucket
 upload_url=http://your-bucket.host.com
 upload_aliyun_internal=false
-upload_aliyun_area=cn-shanghai
+upload_aliyun_region=cn-shanghai
 ```
 
 ## Qinniu
