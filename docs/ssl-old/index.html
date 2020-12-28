@@ -10,7 +10,7 @@
 <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" /><link href="/stylesheets/homeland.css" rel="stylesheet" />
 <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
 </head>
-<body class="docs docs_ssl docs_ssl_index">
+<body class="docs docs_ssl-old docs_ssl-old_index">
 <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
 <div class="container">
 <a class="navbar-brand" href="/"><img src="/images/icon-inverse.svg" alt="Homeland" /></a>
@@ -74,40 +74,63 @@
     <div class="col-md-9">
       <h1>开启 SSL 功能，以支持 HTTPS 的方式访问</h1>
 
-<p>Homeland 内建自动化 SSL 证书管理工具，以及关于 SSL 的一系列配置功能。</p>
-
-<p>自 Homeland 2.8.1 版本开始，继承 <a href="https://caddyserver.com/">Caddy Server</a> 作为 Web 前端，并自动管理 SSL 证书。正常情况下，你应该不需要在关心 SSL 证书的问题。</p>
-
 <blockquote>
-<p>Homeland &lt;= 2.8.1 请阅读 <a href="/docs/ssl/">旧版本 SSL 的文档</a>。</p>
+<p>since: 2.5.0</p>
 </blockquote>
+
+<p>Homeland 内建 <a href="https://letsencrypt.org">Let&#39;s Encrypt</a> 的 SSL 证书申请流程，以及关于 SSL 的一系列配置功能。</p>
+
+<p>如果你使用 Docker 的方式部署 Homeland，你可以轻松开启 SSL 功能，只需要执行 <code>make install_ssl</code> 命令即可申请 SSL 并自动配置上。</p>
 
 <h2>准备</h2>
 
 <ol>
-<li>确定 <code>app.local.env</code> 里面有正确配置 <code>domain</code> 为你的域名；</li>
-<li>确保域名正确绑定到服务器的外网 IP 上；</li>
+<li>确定 <code>app.local.env</code> 里面有正确配置 <code>cert_domain</code> 为你的域名，<code>cert_domain</code> 为 SSL 申请证书的域名。</li>
+<li>确保域名正确绑定到服务器上，并能访问打开；</li>
+<li>一定确保网站服务器能用，因为 SSL 申请过程，需要请求网站 <a href="http://your-domain/.well-known">http://your-domain/.well-known</a> 路径，如果无法访问，后面的流程将会失败。</li>
 </ol>
 
-<h2>开启 SSL 的配置</h2>
+<blockquote>
+<p>注意，<code>cert_domain</code> 配置是专门用于申请 SSL 证书的，单独有此项配置的原因是你可能需要申请泛域名，比如配置为 <code>cert_domain=*.ruby-china.org</code>。你需要确保他和 <code>domain</code> 配置是同一个域名，比如 <code>domain=ruby-china.org</code>。</p>
+</blockquote>
 
-<p>打开 <code>app.local.env</code>，修改 <code>domain</code> 配置项:</p>
+<h2>申请安装 SSL 正确</h2>
 
-<pre><code class="conf">domain=your-host.com
+<pre><code class="bash">$ sudo make install_ssl
 </code></pre>
 
-<h2>启动服务</h2>
+<blockquote>
+<p>过程有很多信息，请注意红色的，如果有问题，请将过程的所有信息在 GitHub 提交 Issue</p>
+</blockquote>
 
-<p>配置好 <code>domain</code> 并确保域名已经绑定到服务器外网 IP 以后，你可以直接启动，接下来内部将会自动处理 SSL 证书申请，以及定期续期等工作。</p>
+<p>如果一切顺利，你将在最后看到类似这样的提示:</p>
+
+<pre><code>---------------------------------------------
+SSL install successed.
+
+Now you need enable https=true on app.local.env config.
+And then restart by run: make restart
+</code></pre>
+
+<p>以及 <code>homeland-docker/shared/ssl</code> 目录将会出现一些新的文件。</p>
+
+<h2>开启 SSL 的配置，并重启服务</h2>
+
+<p>打开 <code>app.local.env</code>，修改 <code>https</code> 配置项:</p>
+
+<pre><code class="conf">https=true
+</code></pre>
+
+<p>然后重启服务:</p>
 
 <pre><code class="bash">sudo make restart
 </code></pre>
 
-<p>接下来你可以用 <a href="https://your-host.com">https://your-host.com</a> 访问你的服务了。</p>
-
 <blockquote>
-<p>如果这个过程有问题，你可以尝试使用 <code>sudo docker-compose logs -f caddy</code> 来查询日志。</p>
+<p>NOTE: 当然开启 https=true 以后，Homeland 将会以强制 SSL 的方式运行，访问 HTTP 协议的请求将自动跳转到 HTTPS 协议。</p>
 </blockquote>
+
+<p>打开，测试你的网站。</p>
 
     </div>
   </div>
