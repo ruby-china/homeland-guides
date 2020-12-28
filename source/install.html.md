@@ -87,15 +87,14 @@ sudo make start
 
 > 在 Linux 环境里面，前面的脚本安装以后，docker，以及一下这些命令需要用 `sudo` 来执行，切记！
 
-| Command          | Desc                                                                                                     |
-| ---------------- | -------------------------------------------------------------------------------------------------------- |
-| make install     | 首次安装，创建数据库                                                                                     |
-| make install_ssl | 安装并申请 SSL 证书 (since: 2.5.0)                                                                       |
-| make update      | 更新应用程序，当 `homeland/homeland` 这个 Docker Image 版本变化的时候，需要执行，合并数据库、编译 Assets |
-| make start       | 启动所有服务，将会自动启动所有的服务                                                                     |
-| make stop        | 停止所有服务                                                                                             |
-| make restart     | 硬重启服务                                                                                               |
-| make status      | 查看服务状态                                                                                             |
-| make console     | 进入 Rails 控制台                                                                                        |
-| make stop-all    | 停止所有服务，包括数据库                                                                                 |
-| make reindex     | 重建搜索索引                                                                                             |
+| Command       | Desc                                                                                                     |
+| ------------- | -------------------------------------------------------------------------------------------------------- |
+| make install  | 首次安装，创建数据库                                                                                     |
+| make update   | 更新应用程序，当 `homeland/homeland` 这个 Docker Image 版本变化的时候，需要执行，合并数据库、编译 Assets |
+| make start    | 启动所有服务，将会自动启动所有的服务                                                                     |
+| make stop     | 停止所有服务                                                                                             |
+| make restart  | 硬重启服务                                                                                               |
+| make status   | 查看服务状态                                                                                             |
+| make console  | 进入 Rails 控制台                                                                                        |
+| make stop-all | 停止所有服务，包括数据库                                                                                 |
+| make reindex  | 重建搜索索引                                                                                             |
