@@ -1,0 +1,16 @@
+---
+"zh-CN":
+  about: 关于
+  expo: 案例
+  release_notes: 版本发布
+  install: 安装
+  docs: 文档
+  support: 社区
+  config:
+    basic: 应用程序配置
+    file_upload: 文件上传配置
+    mailer: 邮件服务配置
+    apns: Apple Push Notification
+    as_sso_client: 通过三方应用实现 SSO 登录
+    as_sso_provider: 提供 SSO 给三方应用
+    ssl: 自动化 SSL

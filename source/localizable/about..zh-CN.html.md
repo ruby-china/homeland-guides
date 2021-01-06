@@ -26,12 +26,4 @@ Homeland 能帮助你快速的构建一个论坛系统，你只需要几步安�
 
 ## License
 
-Released under the MIT license:
-
-- [www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
-
-Emojis under the CC-BY 4.0 license from [Twitter/Twemoji][twemoji]:
-
-- https://github.com/twitter/twemoji#license
-
-[twemoji]: https://github.com/twitter/twemoji
+Released under the [MIT license](http://www.opensource.org/licenses/MIT)

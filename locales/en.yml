@@ -1,0 +1,16 @@
+---
+en:
+  about: About
+  expo: Expo
+  release_notes: Release notes
+  install: Install
+  docs: Documentation
+  support: Support
+  config:
+    basic: Configuring your application
+    file_upload: File upload
+    mailer: Mailer
+    apns: Apple Push Notification
+    as_sso_client: SSO Client
+    as_sso_provider: SSO Provider
+    ssl: Automatic HTTPS
