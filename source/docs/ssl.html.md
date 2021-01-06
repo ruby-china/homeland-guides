@@ -4,7 +4,7 @@
 
 Homeland 内建自动化 SSL 证书管理工具，以及关于 SSL 的一系列配置功能。
 
-自 Homeland 2.8.1 版本开始，继承 [Caddy Server](https://caddyserver.com/) 作为 Web 前端，并自动管理 SSL 证书。正常情况下，你应该不需要在关心 SSL 证书的问题。
+自 Homeland 2.8.1 版本开始，集成 [Caddy Server](https://caddyserver.com/) 作为 Web 前端，并自动管理 SSL 证书。正常情况下，你应该不需要在关心 SSL 证书的问题。
 
 > Homeland <= 2.8.1 请阅读 [旧版本 SSL 的文档](/docs/ssl-legecy/)。
 
