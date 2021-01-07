@@ -22,12 +22,40 @@ title: Install Homeland with Docker - Homeland
 curl -sSL https://git.io/install-docker | bash
 ```
 
+#### Run Docker commands without sudo
+
+##### 1. Add the `docker` group if it doesn't already exist
+
+```console
+$ sudo groupadd docker
+```
+
+##### 2. Add the connected user `$USER` to the docker group
+
+Optionally change the username to match your preferred user.
+
+```console
+$ sudo gpasswd -a $USER docker
+```
+
+##### 3. Restart the `docker` daemon
+
+```console
+$ sudo service docker restart
+```
+
+If you are on Ubuntu 14.04-15.10, use `docker.io` instead:
+
+````console
+$ sudo service docker.io restart
+``
+
 测试是否安装成功：
 
 ```bash
-sudo docker info
-sudo docker-compose version
-```
+docker info
+docker-compose version
+````
 
 ### 获取 homeland-docker 的项目
 
@@ -63,16 +91,14 @@ admin_emails=admin@admin.com
 
 ## 编译环境
 
-> 前面的脚本安装以后，docker 需要用 `sudo` 来执行，切记！
-
 ```bash
-sudo make install
+make install
 ```
 
 ## 启动
 
 ```bash
-sudo make start
+make start
 ```
 
 然后服务将会以 80, 443 端口的方式跑在你的服务器上，Nginx 什么的都已经配置好了，你只需要访问你之前配置的域名即可（别忘了域名解析配置到你的服务器 IP 哦），例如 http://your-host.com
