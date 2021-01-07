@@ -15,7 +15,7 @@
     <script src="/javascripts/jquery.min.js"></script><script src="/javascripts/tether.min.js"></script><script src="/javascripts/bootstrap.min.js"></script>
 </head>
 
-<body class="install install_index">
+<body class="zh-CN zh-CN_install zh-CN_install_index">
   <nav class="navbar navbar-dark bg-primary bg-faded navbar-full">
     <div class="container">
       <a class="navbar-brand" href="/">
@@ -25,27 +25,27 @@
         <ul class="nav navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="/about">
-              About
+              关于
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/expo">
-              Expo
+              案例
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/install">
-              Install
+              安装
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/ruby-china/homeland/releases">
-              Release notes
+              版本发布
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/docs">
-              Documentation
+              文档
             </a>
           </li>
           <li class="nav-item">
@@ -53,13 +53,13 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" target="_blank" href="https://ruby-china.org">
-              Support
+              社区
             </a>
           </li>
         </ul>
         <ul class="nav navbar-nav float-lg-right">
           <li class="nav-item">
-              <a class="nav-link" href="/zh-CN">简体中文</a>
+              <a class="nav-link" href="/">English</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="http://github.com/ruby-china/homeland" target="_blank">
@@ -80,20 +80,21 @@
     <div class="container">
       <h2>Homeland Docker</h2>
 
-<p><a href="http://gethomeland.com">Homeland</a> builit on Docker for automated deploy.</p>
+<p><a href="http://gethomeland.com">Homeland</a> 基于 Docker 的自动化部署方案。</p>
 
-<h2>System requirements</h2>
+<h2>系统需求</h2>
 
 <ul>
-<li>Linux Server [4 Core CPU, 4G Memory, 50G Disk, 64 bit] - <u>Better use Ubuntu Server 14.04</u></li>
+<li>Linux Server [4 Core CPU, 4G Memory, 50G Disk, 64 位] - <u>建议 Ubuntu Server 14.04</u></li>
 <li><a href="https://www.docker.com/">Docker</a>, <a href="https://docs.docker.com/compose/">Docker Compose</a></li>
+<li><a href="https://www.aliyun.com/product/oss">Aliyun OSS</a> 或 <a href="https://www.upyun.com">UpYun</a> 用于文件存储。</li>
 </ul>
 
 <h2>Usage</h2>
 
-<h3>Install Docker:</h3>
+<h3>安装 Docker:</h3>
 
-<p>This script was made for Ubuntu Server 14.04, If you use other system version, please read <a href="https://docker.github.io/engine/installation/linux/">Docker Installaction</a>.</p>
+<p>下面的脚本是针对 Ubuntu Server 14.04 设计的，其他版本，请查阅 <a href="https://docker.github.io/engine/installation/linux/">Docker 官方的安装文档</a>。</p>
 
 <pre><code class="bash">curl -sSL https://git.io/install-docker | bash
 </code></pre>
@@ -122,47 +123,72 @@
 <pre><code class="console">$ sudo service docker.io restart
 ``
 
-### Test Docker
+测试是否安装成功：
 
 ```bash
 docker info
 docker-compose version
 </code></pre>
 
-<h3>Get homeland-docker</h3>
+<h3>获取 homeland-docker 的项目</h3>
 
 <pre><code class="bash">git clone https://github.com/ruby-china/homeland-docker.git
 cd homeland-docker/
 </code></pre>
 
-<h2>Application configuration</h2>
+<h2>应用程序配置</h2>
 
-<p>Homeland use <code>app.local.env</code> file to config, there have an example in <code>app.default.env</code>. You must read the <a href="/docs/configuration/config-file/">Configuration</a> and customize the config varibles with your application.</p>
+<p>Homeland 的应用程序配置主要基于 <code>app.local.env</code> 文件，请参考 <code>app.default.env</code>，以及阅读 <a href="/docs/configuration/config-file/">Config File</a> 理解各项配置信息的含义，根据自己的需要调整。</p>
 
-<p><strong>Required settings</strong></p>
+<blockquote>
+<p>NOTE: Docker 模式依靠环境变量文件 <code>app.local.env</code> (此文件需要手工创建) 来配置应用，理论上你不需要修改 <code>config/config.yml</code>，除非你知道如何配置。</p>
+</blockquote>
 
-<p>Please edit <code>app.local.env</code> file:</p>
+<p>默认情况下，Homeland 自带了基础的配置，但你仍然需要进行一系列的配置以后才可正常使用所有功能。</p>
 
-<pre><code class="conf"># For auto SSL get cert
-domain=your-host.com
-# default: admin@admin.com, when you use this email register a user, you will get the admin role.
-# Or you can change it as your email.
+<p><strong>必要设置</strong></p>
+
+<p>请修改 <code>app.local.env</code> 做一些必要的设置</p>
+
+<ol>
+<li>增加 <code>domain</code> 设置网站的域名（并确保域名 DNS 绑定到你的主机的 IP）</li>
+<li>增加 <code>admin_emails</code>，增加一个管理员 Email （多个管理员 Email，用英文逗号分隔）。</li>
+</ol>
+
+<p><code>app.local.env</code> 配置例如：</p>
+
+<pre><code class="conf">domain=your-host.com
+# 默认 admin@admin.com，你可以按你的需要修改，这里设置可以覆盖默认配置
 admin_emails=admin@admin.com
 </code></pre>
 
-<h2>Install</h2>
+<blockquote>
+<p>稍后等 Web 服务启动起来以后，你可以用这个 Email 来注册一个新账号，新账号将会有管理员权限。</p>
+</blockquote>
+
+<h2>编译环境</h2>
 
 <pre><code class="bash">make install
 </code></pre>
 
-<h2>Startup</h2>
+<h2>启动</h2>
 
 <pre><code class="bash">make start
 </code></pre>
 
-<p>Now, you can visit <a href="https://your-host.com">https://your-host.com</a></p>
+<p>然后服务将会以 80, 443 端口的方式跑在你的服务器上，Nginx 什么的都已经配置好了，你只需要访问你之前配置的域名即可（别忘了域名解析配置到你的服务器 IP 哦），例如 <a href="http://your-host.com">http://your-host.com</a></p>
 
-<h2>Commands</h2>
+<h2>注册管理员</h2>
+
+<p>打开网站，并打开注册页面，用刚才设定的 <code>admin_emails</code> 的 Email 账号（如果没有设置，可以使用默认的 <code>admin@admin.com</code>）注册新账号，完成步骤，并登陆以后，你可以点击 “导航栏” 右侧的 “用户头像”，弹出下拉菜单，并点击 “后台”，进入到管理后台界面。</p>
+
+<p>或者可以直接访问 <a href="http://your-host.com/admin">http://your-host.com/admin</a> 进入管理后台。</p>
+
+<h2>命令列表</h2>
+
+<blockquote>
+<p>在 Linux 环境里面，前面的脚本安装以后，docker，以及一下这些命令需要用 <code>sudo</code> 来执行，切记！</p>
+</blockquote>
 
 <table><thead>
 <tr>
@@ -172,39 +198,39 @@ admin_emails=admin@admin.com
 </thead><tbody>
 <tr>
 <td>make install</td>
-<td>For first install, create database</td>
+<td>首次安装，创建数据库</td>
 </tr>
 <tr>
 <td>make update</td>
-<td>Update docker image and restart application for update</td>
+<td>更新应用程序，当 <code>homeland/homeland</code> 这个 Docker Image 版本变化的时候，需要执行，合并数据库、编译 Assets</td>
 </tr>
 <tr>
 <td>make start</td>
-<td>Startup application</td>
+<td>启动所有服务，将会自动启动所有的服务</td>
 </tr>
 <tr>
 <td>make stop</td>
-<td>Stop application containers (except Database, Redis)</td>
+<td>停止所有服务</td>
 </tr>
 <tr>
 <td>make restart</td>
-<td>Restart application</td>
+<td>硬重启服务</td>
 </tr>
 <tr>
 <td>make status</td>
-<td>Show container status</td>
+<td>查看服务状态</td>
 </tr>
 <tr>
 <td>make console</td>
-<td>Enter the Rails console</td>
+<td>进入 Rails 控制台</td>
 </tr>
 <tr>
 <td>make stop-all</td>
-<td>Stop all services (including Databse, Redis)</td>
+<td>停止所有服务，包括数据库</td>
 </tr>
 <tr>
 <td>make reindex</td>
-<td>Rebuild Search indexes</td>
+<td>重建搜索索引</td>
 </tr>
 </tbody></table>
 
