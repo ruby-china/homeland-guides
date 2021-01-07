@@ -65,7 +65,7 @@ cd homeland-docker/
 
 ## Application configuration
 
-Homeland use `app.local.env` file to config, there have an example in `app.default.env`. You must read the [Configuration](/docs/configuration/config-file/) and customize the config varibles with your application.
+Homeland use `app.local.env` file to config, there have an example in `app.default.env`. You must read the [Configuration](/docs/configuration/config-file/) and customize the config variables with your application.
 
 **Required settings**
 

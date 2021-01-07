@@ -1,6 +1,7 @@
 ###
 # Page options, layouts, aliases and proxies
 ###
+set :version, "3.8.3"
 
 activate :i18n, langs: %i[en zh-CN], mount_at_root: :en
 
