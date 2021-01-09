@@ -39,7 +39,7 @@ mailer_options_enable_starttls_auto=true
 
 ```conf
 mailer_provider=postmark
-mailer_sender=no-relay@your-domain.com
+mailer_sender=no-reply@your-domain.com
 mailer_options_api_key=your-postmark-api-key
 ```
 
