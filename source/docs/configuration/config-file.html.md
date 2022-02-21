@@ -21,7 +21,7 @@ Homeland 包含一系列的配置参数，在项目的 `app.local.env` 包含 Ho
 | 配置项          | 解释                                                                                                     | 需要重启? |
 | --------------- | -------------------------------------------------------------------------------------------------------- | --------- |
 | domain          | 网站域名，例如 www.foo.com                                                                               | 是        |
-| https           | 开启 Homeland 的 SSL 功能（出了开启此项，还别忘了要对 Web 服务配置 SSL）                                 | 是        |
+| https           | 开启 Homeland 的 SSL 功能（除了开启此项，还别忘了要对 Web 服务配置 SSL）                                 | 是        |
 | asset_host      | 自定义网站静态资源文件的 Host，保持为空将不启用                                                          | 是        |
 | admin_emails    | 管理员 Email 列表，当注册的账号 Email 在这个列表，将获得管理员权限（一行一个），默认 `admin@admin.com`   |           |
 | mailer_provider | 邮件发送方式: [`smtp`, `postmark`]                                                                       | 是        |
@@ -71,7 +71,7 @@ Homeland 允许你在一些重要位置自由编写 HTML，以适应不同的应
 | navbar_brand_html        | 导航栏 Logo 位置 HTML，你可以设置你的 Logo                                       |
 | navbar_html              | 导航栏扩展菜单，可以在顶部导航条增加扩展链接                                     |
 | footer_html              | 页面底部区域自定义 HTML，例如版权信息，次要链接等等                              |
-| index_html               | 首页导航栏一下区域自定义 HTML                                                    |
+| index_html               | 首页导航栏以下区域自定义 HTML                                                    |
 | wiki_index_html          | Wiki 首页自定义 HTML                                                             |
 | wiki_sidebar_html        | Wiki 页面左侧位置自定义 HTML                                                     |
 | topic_index_sidebar_html | 论坛话题列表首页 (/topics) 右侧边栏自定义 HTML                                   |
